@@ -2,7 +2,9 @@
   "name": "@vue-cruder/core",
   "version": "0.1.0",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build": "tsc"
+  },
   "author": "@schirrel",
   "devDependencies": {
     "@types/jest": "^27.4.0",

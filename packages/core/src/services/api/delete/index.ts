@@ -2,7 +2,7 @@ import { AxiosInstance } from "axios";
 
 export const del =
   (api: AxiosInstance) =>
-  ({ endpoint, id }) => {
+  ({ endpoint, id }: params) => {
     api.delete(`${endpoint}/${id}`);
   };
 
