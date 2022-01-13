@@ -1,13 +1,17 @@
 <template>
   <form ref="form" v-on:submit="submit">
-    <template v-for="field of mountedFields">
-      <component
-        :key="field.id"
-        :is="field.component"
-        v-bind="field.properties"
-      ></component>
-    </template>
-    <button>Submit</button>
+    <component :is="title ? 'fieldset' : 'div'">
+      <legend v-if="title">{{ title }}</legend>
+      <span v-show="loading"> Loading </span>
+      <template v-for="field of mountedFields">
+        <component
+          :key="field.id"
+          :is="field.component"
+          v-bind="field.properties"
+        ></component>
+      </template>
+      <button>Submit</button>
+    </component>
   </form>
 </template>
 
@@ -21,12 +25,17 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
+    service: {},
+    title: {
+      type: String,
+    },
   },
   data: () => ({
     mountedFields: [],
+    loading: false,
   }),
   methods: {
-    submit($event) {
+    async submit($event) {
       $event.preventDefault();
       const resultModel = {};
       this.fields.forEach((field) => {
@@ -35,6 +44,18 @@ export default Vue.extend({
           resultModel[field.id] = fieldValue;
         }
       });
+      console.log(this.service);
+      if (this.service && this.service.create) {
+        try {
+          this.loading = true;
+          await this.service.create(resultModel);
+        } catch (err) {
+          return this.$emit("error", err);
+        } finally {
+          this.loading = false;
+        }
+      }
+
       this.$emit("submit", resultModel);
     },
   },

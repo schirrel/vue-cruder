@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+import { params } from "../models";
 
 export const update =
   (api: AxiosInstance) =>

@@ -5,6 +5,7 @@ import { read, list, readSimple, listSimple } from "./read";
 import { create, createSimple } from "./create";
 import { update, updateSimple } from "./update";
 import { del, deleteSimple } from "./delete";
+import { CRUD, SimpleCRUD } from "./models";
 
 const _createService = (config: AxiosRequestConfig) => {
   const api: AxiosInstance = axios.create(config);
@@ -14,7 +15,7 @@ const _createService = (config: AxiosRequestConfig) => {
   return api;
 };
 
-export const createCRUD = (config: AxiosRequestConfig) => {
+export const createCRUD = (config: AxiosRequestConfig): CRUD => {
   const api = _createService(config);
   return {
     read: read(api),
@@ -25,7 +26,7 @@ export const createCRUD = (config: AxiosRequestConfig) => {
   };
 };
 
-export const createSimpleCRUD = (config: AxiosRequestConfig) => {
+export const createSimpleCRUD = (config: AxiosRequestConfig): SimpleCRUD => {
   const api = _createService(config);
 
   return {

@@ -1,21 +1,12 @@
 <template>
   <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png" />
     <Form
-      title="With Service"
       v-if="service"
       :fields="formFields"
       @submit="save"
       @error="errorSaving"
       :service="service"
-    >
-    </Form>
-    <hr />
-    <p>Without service</p>
-    <Form
-      v-if="service"
-      :fields="formFields"
-      @submit="save"
-      @error="errorSaving"
     >
     </Form>
   </div>
@@ -66,10 +57,24 @@ export default Vue.extend({
        * Any auth stuff goes here
        */
     });
+
+    // service.read("1");
+    // service.list({
+    //   page: 3,
+    //   size: 10,
+    //   name: "John",
+    // });
+    // service.create({
+    //   name: "John",
+    // });
+    // service.update("1", {
+    //   name: "John",
+    // });
+    // service.delete("1");
   },
   methods: {
     save(fields) {
-      console.log("After submit", fields);
+      // console.log("RECIEVED", fields);
     },
     errorSaving(err) {
       console.log("ERROR", err);
