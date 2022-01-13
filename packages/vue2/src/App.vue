@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <h1>Form</h1>
+
     <Form
       title="With Service"
       v-if="service"
@@ -10,21 +12,41 @@
     >
     </Form>
     <hr />
+    <h2>Without service</h2>
+
     <p>Without service</p>
     <Form :fields="formFields2" @submit="save" @error="errorSaving"> </Form>
+
+    <hr />
+    <h1>Normal List</h1>
+
+    <List v-if="service" :service="service" :headers="headers" />
+
+    <hr />
+    <h2>with actions</h2>
+    <hr />
+    <List
+      v-if="service"
+      :service="service"
+      :headers="headers"
+      :actions="actions"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
-import Form from "@/components/form/Form.vue";
+import Form from "@/components/Form/Form.vue";
 import { FieldOptions } from "@/components/model";
+
+import List from "@/components/List/List.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
     Form,
+    List,
   },
   data: () => ({
     service: null,
@@ -59,10 +81,45 @@ export default Vue.extend({
         type: FieldOptions.BOOLEAN,
       },
     ],
+
+    headers: [
+      {
+        text: "Name",
+        key: "name",
+      },
+      {
+        text: "Email",
+        key: "email",
+      },
+      {
+        text: "Phone",
+        key: "phone",
+      },
+      {
+        text: "Website",
+        key: "website",
+      },
+    ],
+    actions: [
+      {
+        type: "edit",
+        text: "Edit",
+        callback: (row) => {
+          console.log("edit", row);
+        },
+      },
+      {
+        type: "delete",
+        text: "Delete",
+        callback: (row) => {
+          console.log("delete", row);
+        },
+      },
+    ],
   }),
   mounted() {
     this.service = createSimpleCRUD({
-      baseURL: "https://jsonplaceholder.typicode.com",
+      baseURL: "https://jsonplaceholder.typicode.com/users",
       /**
        * Any auth stuff goes here
        */
