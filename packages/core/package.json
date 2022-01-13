@@ -2,6 +2,8 @@
   "name": "@vue-cruder/core",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
+  "module": "src/index.jx",
   "scripts": {
     "build": "tsc"
   },

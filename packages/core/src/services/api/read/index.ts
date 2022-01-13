@@ -1,22 +1,26 @@
 import { AxiosInstance } from "axios";
+import { EMPTY_URI } from "../models/consts";
 
 export const read =
   (api: AxiosInstance) =>
   ({ endpoint, id }: params) => {
-    api.get(`${endpoint}/${id}`);
+    if (!id) throw Error("id is required");
+
+    return api.get(endpoint ? `${endpoint}/${id}` : `/${id}`);
   };
+
 export const list =
   (api: AxiosInstance) =>
   ({ endpoint, params }: params) => {
-    api.get(endpoint, { params });
+    return api.get(endpoint ? `${endpoint}` : EMPTY_URI, { params });
   };
 
 export const readSimple = (api: AxiosInstance) => (id: string) => {
-  api.get(`/${id}`);
+  if (!id) throw Error("id is required");
+
+  return api.get(`/${id}`);
 };
 
-export const listSimple =
-  (api: AxiosInstance) =>
-  ({ params }: params) => {
-    api.get("", { params });
-  };
+export const listSimple = (api: AxiosInstance) => (params) => {
+  return api.get(EMPTY_URI, { params });
+};

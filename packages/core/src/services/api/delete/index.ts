@@ -3,9 +3,13 @@ import { AxiosInstance } from "axios";
 export const del =
   (api: AxiosInstance) =>
   ({ endpoint, id }: params) => {
-    api.delete(`${endpoint}/${id}`);
+    if (!id) throw Error("id is required");
+
+    return api.delete(`${endpoint}/${id}`);
   };
 
 export const deleteSimple = (api: AxiosInstance) => (id: string) => {
-  api.delete(`/${id}`);
+  if (!id) throw Error("id is required");
+
+  return api.delete(`/${id}`);
 };

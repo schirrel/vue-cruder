@@ -1,13 +1,12 @@
 import { AxiosInstance } from "axios";
+import { EMPTY_URI } from "../models/consts";
 
 export const create =
   (api: AxiosInstance) =>
   ({ endpoint, object }: params) => {
-    api.put(endpoint, object);
+    return api.post(endpoint || EMPTY_URI, object);
   };
 
-export const createSimple =
-  (api: AxiosInstance) =>
-  ({ object }: params) => {
-    api.put("", object);
-  };
+export const createSimple = (api: AxiosInstance) => (body) => {
+  return api.post(EMPTY_URI, body);
+};
