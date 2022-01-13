@@ -11,13 +11,7 @@
     </Form>
     <hr />
     <p>Without service</p>
-    <Form
-      v-if="service"
-      :fields="formFields"
-      @submit="save"
-      @error="errorSaving"
-    >
-    </Form>
+    <Form :fields="formFields2" @submit="save" @error="errorSaving"> </Form>
   </div>
 </template>
 
@@ -56,6 +50,13 @@ export default Vue.extend({
         class: "dateType-class",
         label: "My Date",
         type: FieldOptions.DATE,
+      },
+    ],
+    formFields2: [
+      {
+        id: "booleanType",
+        label: "My Boolean 2",
+        type: FieldOptions.BOOLEAN,
       },
     ],
   }),

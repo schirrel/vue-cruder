@@ -1,10 +1,11 @@
 <template>
-  <div class="vue-cruder__field--input">
-    <label class="vue-cruder__field--input__label" v-if="label">
+  <div class="vue-cruder__field--checkbox">
+    <label class="vue-cruder__field--checkbox__label" v-if="label">
       {{ label }}</label
     >
     <input
-      class="vue-cruder__field--input__input"
+      type="checkbox"
+      class="vue-cruder__field--checkbox__checkbox"
       v-on="$listeners"
       v-bind="$attrs"
     />
@@ -15,7 +16,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "Input",
+  name: "Boolean",
   props: {
     label: {
       type: String,
