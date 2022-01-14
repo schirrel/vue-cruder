@@ -1,5 +1,5 @@
 <template>
-  <form class="vue-cruder__form" ref="form" v-on:submit="submit">
+  <form class="vue-cruder__form" :ref="name" v-on:submit="submit">
     <component :is="title ? 'fieldset' : 'div'">
       <legend v-if="title">{{ title }}</legend>
       <span v-show="loading"> Loading </span>
@@ -29,6 +29,10 @@ export default Vue.extend({
     title: {
       type: String,
     },
+     name: {
+      type: String,
+      required: true,
+    },
   },
   data: () => ({
     mountedFields: [],
@@ -38,7 +42,7 @@ export default Vue.extend({
     async submit($event) {
       $event.preventDefault();
 
-      const resultModel = createFormResultFields(this.fields, this.$refs.form);
+      const resultModel = createFormResultFields(this.fields, this.$refs[this.name]);
       if (this.service && this.service.create) {
         try {
           this.loading = true;

@@ -3,6 +3,7 @@
     <h1>Form</h1>
 
     <Form
+      name="form1"
       title="With Service"
       v-if="service"
       :fields="formFields"
@@ -12,12 +13,18 @@
     >
     </Form>
     <hr />
-    <h2>Without service</h2>
 
     <p>Without service</p>
-    <Form :fields="formFields2" @submit="save" @error="errorSaving"> </Form>
+    <Form
+      name="form2"
+      :fields="formFields2"
+      @submit="save"
+      @error="errorSaving"
+    >
+    </Form>
 
     <hr />
+
     <h1>Normal List</h1>
 
     <List v-if="service" :service="service" :headers="headers" />
@@ -31,6 +38,15 @@
       :headers="headers"
       :actions="actions"
     />
+    <hr />
+    <h2>with default actions</h2>
+    <hr />
+    <List
+      v-if="service"
+      :service="service"
+      :headers="headers"
+      use-crud-actions
+    />
   </div>
 </template>
 
@@ -38,7 +54,7 @@
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
 import Form from "@/components/Form/Form.vue";
-import { FieldOptions } from "@/components/model";
+import { FieldOptions } from "@/components/model/index";
 
 import List from "@/components/List/List.vue";
 
@@ -102,17 +118,17 @@ export default Vue.extend({
     ],
     actions: [
       {
-        type: "edit",
-        text: "Edit",
+        type: "send",
+        text: "Send",
         callback: (row) => {
-          console.log("edit", row);
+          console.log("send", row);
         },
       },
       {
-        type: "delete",
-        text: "Delete",
+        type: "cancel",
+        text: "Cancel",
         callback: (row) => {
-          console.log("delete", row);
+          console.log("cancel", row);
         },
       },
     ],
