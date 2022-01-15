@@ -1,5 +1,5 @@
 {
-  "name": "vue-cruder-vue2",
+  "name": "@vue-cruder/ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {

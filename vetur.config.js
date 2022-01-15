@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ["./packages/core", "./packages/vue2"],
+  projects: ["./packages/core", "./packages/ui"],
 };
