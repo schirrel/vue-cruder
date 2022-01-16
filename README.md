@@ -19,7 +19,7 @@ It provides CRUD based services with HTTP request built in:
 - `list GET` with query params, you can use as a simple search or pagination
 - `create POST` with body
 - `update PUT /:id` with body
-- `delete DELETE /:id` with body
+- `delete DELETE /:id` 
 
 The HTTP client is based on [axios](https://github.com/axios/axios), and its create method receive an `AxiosRequestConfig` object, so if you need and security header or further configuration, you are free.
 
@@ -34,14 +34,14 @@ const services = createCRUD({
   baseURL: "https://your-general-endpoint.com/api",
 });
 
-services.read("user", "user-guid");
+services.read("user", "user-guid"); // Final: GET to https://your-general-endpoint.com/api/user/user-guid
 services.create("profile", {
   /* profile body */
-});
+}); // Final: POST to https://your-general-endpoint.com/api/profile
 ```
 
 **createSimpleCRUD**
-This type of service works similar to the below one, the only difference is that this is _supposed_ to have the full endpoint as the `baseURL` and so it only perform the operations to it. e.g.:
+This type of service works similar to the previous one, the difference is that createSimpleCRUD is _supposed_ to have the full endpoint as the `baseURL` and so it only perform the operations to it, working like a scoped service. e.g.:
 
 ```js
 import { createSimpleCRUD } from "@vue-cruder/core";
