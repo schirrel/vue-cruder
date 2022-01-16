@@ -1,4 +1,4 @@
-import { FieldOptions } from "@/components/model";
+import { FieldOptions } from "@/components/models";
 
 export interface FormFieldOptions {
   id: string;
