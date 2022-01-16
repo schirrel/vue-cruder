@@ -1,6 +1,6 @@
 import Input from "@/components/Form/Fields/Input/Input.vue";
 import Boolean from "@/components/Form/Fields/Boolean/Boolean.vue";
-import { FieldOptions } from "@/components/model";
+import { FieldOptions } from "@/components/models";
 
 export const createFieldComponent = (field) => {
   const props = { ...field };
