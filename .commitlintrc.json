@@ -2,5 +2,8 @@
     "extends": [
         "@commitlint/config-conventional",
         "@commitlint/config-lerna-scopes"
+    ],
+    "scope-enum": [
+        "core", "ui", "example", "root"
     ]
 }
