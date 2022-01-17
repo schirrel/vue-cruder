@@ -10,7 +10,23 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["webpack-env", "jest"],
+    "types": [
+      "webpack-env",
+      "jest"
+    ],
     "baseUrl": "./packages",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "lib": [
+      "esnext"
+    ]
   },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
 }

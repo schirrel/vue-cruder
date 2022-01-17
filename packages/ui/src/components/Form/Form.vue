@@ -29,7 +29,7 @@ export default Vue.extend({
     title: {
       type: String,
     },
-     name: {
+    name: {
       type: String,
       required: true,
     },
@@ -42,7 +42,10 @@ export default Vue.extend({
     async submit($event) {
       $event.preventDefault();
 
-      const resultModel = createFormResultFields(this.fields, this.$refs[this.name]);
+      const resultModel = createFormResultFields(
+        this.fields,
+        this.$refs[this.name]
+      );
       if (this.service && this.service.create) {
         try {
           this.loading = true;

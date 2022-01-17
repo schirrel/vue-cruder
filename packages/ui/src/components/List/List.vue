@@ -102,6 +102,7 @@ export default Vue.extend({
         try {
           await this.service.delete(row.id);
         } catch (err) {
+          // eslint-disable-next-line
           console.log(err);
         } finally {
           this.loading = false;
@@ -119,7 +120,6 @@ export default Vue.extend({
     finishEdit(row) {
       row.editable = false;
       this.$forceUpdate();
-      console.log(row)
     },
   },
 });
