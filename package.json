@@ -6,13 +6,11 @@
   "author": "Alan Schio <alanbschio@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bt": "lerna bootstrap",
     "build": "lerna run build",
     "test": "lerna run test --stream",
     "publish": "lerna publish",
@@ -22,7 +20,9 @@
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/config-lerna-scopes": "^16.0.0",
+    "@vue/cli-plugin-typescript": "^4.5.15",
     "husky": "^7.0.4",
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "lint-staged": "^12.1.7"
   }
 }

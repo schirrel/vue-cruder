@@ -14,7 +14,7 @@
       "webpack-env",
       "jest"
     ],
-    "baseUrl": "./packages",
+    "baseUrl": "./",
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
@@ -22,11 +22,16 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "lib": [
+      "dom",
       "esnext"
-    ]
+    ],
   },
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
-  ]
+  ],
+  "paths": {
+    "@vue-cruder/core": ["packages/core/src/index.ts"],
+    "@vue-cruder/ui": ["packages/ui/src/main.ts"]
+  }
 }

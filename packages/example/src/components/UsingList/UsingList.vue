@@ -1,10 +1,10 @@
 <template>
-  <section>
+  <section v-if="service">
     <h1>Normal List</h1>
+{{ service}}
+    <List  :service="service" :headers="headers" />
 
-    <List v-if="service" :service="service" :headers="headers" />
-
-    <hr />
+    <!-- <hr />
     <h2>with actions</h2>
     <hr />
     <List
@@ -21,10 +21,10 @@
       :service="service"
       :headers="headers"
       use-crud-actions
-    />
+    /> -->
   </section>
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
 
 import { createSimpleCRUD } from "@vue-cruder/core";
@@ -59,26 +59,31 @@ export default Vue.extend({
           type: "send",
           text: "Send",
           callback: (row) => {
-            console.log("send", row);
+            row.sent = true
+            // console.log("send", row);
           },
         },
         {
           type: "cancel",
           text: "Cancel",
           callback: (row) => {
-            console.log("cancel", row);
+            row.canceled = true
+            // console.log("cancel", row);
           },
         },
       ],
     };
   },
   mounted() {
-    this.service = createSimpleCRUD({
+    this.service =  createSimpleCRUD({
       baseURL: "https://jsonplaceholder.typicode.com/users",
       /**
        * Any auth stuff goes here
        */
     });
+    this.service.read("test")
+
+    console.dir(this.service)
   },
 });
 </script>

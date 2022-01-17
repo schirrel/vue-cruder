@@ -11,8 +11,8 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.5.3",
-    "@vue-cruder/core": "*",
-    "@vue-cruder/ui": "*"
+    "@vue-cruder/core": "file:../core",
+    "@vue-cruder/ui": "file:../ui"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

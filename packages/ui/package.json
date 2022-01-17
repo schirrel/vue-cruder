@@ -10,7 +10,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@vue-cruder/core": "*",
+    "@vue-cruder/core": "file:../core",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.15",
     "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -52,7 +52,9 @@
   "main": "dist/index.umd.js",
   "module": "dist/index.common.js",
   "unpkg": "dist/index.umd.min.js",
+  "source": "src/main.ts",
   "files": [
-    "dist"
+    "dist/",
+    "package.json"
   ]
 }

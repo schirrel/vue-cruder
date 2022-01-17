@@ -26,11 +26,11 @@
     <hr />
   </section>
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
 
 import { createSimpleCRUD } from "@vue-cruder/core";
-import { Form } from "@vue-cruder/ui";
+import { Form, FieldOptions } from "@vue-cruder/ui";
 
 export default Vue.extend({
   name: "UsingForm",

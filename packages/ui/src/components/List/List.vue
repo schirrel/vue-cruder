@@ -48,7 +48,10 @@ export default Vue.extend({
   components: { Editable },
   props: {
     headers: {},
-    service: {},
+    service: {
+      type: Object,
+      required: false
+    },
     actions: {
       type: Array,
       default: () => null,
@@ -85,7 +88,8 @@ export default Vue.extend({
   },
   async mounted() {
     if (this.service) {
-      const response = await this.service.list();
+      console.dir(this.service)
+      const response = await this.service?.list();
       this.items = response.data;
     }
 
