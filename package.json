@@ -12,12 +12,17 @@
     ]
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap --use-workspaces",
-    "start": "lerna run start --parallel",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
     "test": "lerna run test --stream",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@commitlint/config-lerna-scopes": "^16.0.0",
+    "husky": "^7.0.4",
     "lerna": "^4.0.0"
   }
 }
