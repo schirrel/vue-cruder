@@ -107,7 +107,4 @@ dist
 *.lock
 */*.lock
 
-*lock.json
-*/*lock.json
-
 .npmrc
