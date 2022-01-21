@@ -10,6 +10,10 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
+    "@material/mwc-button": "^0.25.3",
+    "@material/mwc-formfield": "^0.25.3",
+    "@material/mwc-textarea": "^0.25.3",
+    "@material/mwc-textfield": "^0.25.3",
     "@vue-cruder/core": "file:../core",
     "vue": "^2.6.11"
   },

@@ -8,17 +8,23 @@
           :key="field.id"
           :is="field.component"
           v-bind="field.properties"
+          v-model="models[field.id]"
+          @input="updateValue($event, field)"
         ></component>
       </template>
-      <button>Submit</button>
+      <mwc-button @click="formSubmit" raised label="Submit"></mwc-button>
     </component>
   </form>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { createFieldComponent, createFormResultFields } from "@/services/form";
-
+import {
+  createFieldComponent,
+  createFormResultFields,
+  getFieldValue,
+} from "@/services/form";
+import "@material/mwc-button";
 export default Vue.extend({
   props: {
     fields: {
@@ -37,15 +43,19 @@ export default Vue.extend({
   data: () => ({
     mountedFields: [],
     loading: false,
+    models: {},
   }),
   methods: {
     async submit($event) {
       $event.preventDefault();
 
-      const resultModel = createFormResultFields(
-        this.fields,
-        this.$refs[this.name]
-      );
+      console.log(this.models);
+      // console.dir();
+      // const resultModel = createFormResultFields(
+      //   this.fields,
+      //   this.$refs[this.name]
+      // );
+      const resultModel = this.models;
       if (this.service && this.service.create) {
         try {
           this.loading = true;
@@ -58,6 +68,18 @@ export default Vue.extend({
       }
 
       this.$emit("submit", resultModel);
+    },
+    formSubmit($event) {
+      $event.preventDefault();
+      this.$refs[this.name].requestSubmit();
+    },
+    updateValue($event, field) {
+      console.log($event.target.value);
+      console.log(getFieldValue(field.properties, $event.target));
+      this.models[field.properties.id] = getFieldValue(
+        field.properties,
+        $event.target
+      );
     },
   },
   mounted() {

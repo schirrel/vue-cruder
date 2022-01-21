@@ -23,14 +23,14 @@ export const createFieldComponent = (field) => {
   }
 };
 
-export const getFieldValue = (field, form) => {
-  switch (field.type) {
+export const getFieldValue = (field, element) => {
+  switch (field.type.toUpperCase()) {
     case FieldOptions.TEXT:
     case FieldOptions.PASSWORD:
     case FieldOptions.DATE:
-      return form.elements.namedItem(field.id).value;
+      return element.value;
     case FieldOptions.BOOLEAN:
-      return form.elements.namedItem(field.id).checked;
+      return element.checked;
   }
 };
 
