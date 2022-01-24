@@ -1,5 +1,4 @@
-import Input from "@/components/Form/Fields/Input/Input.vue";
-import Boolean from "@/components/Form/Fields/Boolean/Boolean.vue";
+import { Input , Checkbox, DatePicker} from 'element-ui';
 import { FieldOptions } from "@/components/models";
 
 export const createFieldComponent = (field) => {
@@ -9,15 +8,20 @@ export const createFieldComponent = (field) => {
   switch (field.type) {
     case FieldOptions.TEXT:
     case FieldOptions.PASSWORD:
-    case FieldOptions.DATE:
       return {
         component: Input,
         properties: props,
       };
+      case FieldOptions.DATE:
+        return {
+          component:  DatePicker,
+          properties: props,
+
+        }
     case FieldOptions.BOOLEAN:
       delete props.type;
       return {
-        component: Boolean,
+        component: Checkbox,
         properties: props,
       };
   }

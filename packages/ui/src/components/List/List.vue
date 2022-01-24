@@ -40,18 +40,19 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { PropOptions } from "vue";
+import  { SimpleCRUD } from "@vue-cruder/core";
 
 import Editable from "./Editable/Editable.vue";
 export default Vue.extend({
   name: "List",
   components: { Editable },
   props: {
-    headers: {},
+    headers: Array,
     service: {
       type: Object,
-      required: false
-    },
+      required: true
+    } as PropOptions<SimpleCRUD>,
     actions: {
       type: Array,
       default: () => null,
@@ -87,7 +88,7 @@ export default Vue.extend({
     },
   },
   async mounted() {
-    if (this.service) {
+    if (this.service && this.service.list) {
       console.dir(this.service)
       const response = await this.service?.list();
       this.items = response.data;

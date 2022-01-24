@@ -2,15 +2,13 @@
   <form class="vue-cruder__form" :ref="name" v-on:submit="submit">
     <component :is="title ? 'fieldset' : 'div'">
       <legend v-if="title">{{ title }}</legend>
-      <span v-show="loading"> Loading </span>
+      <span v-show="loading">Loading</span>
       <template v-for="field of mountedFields">
-        <component
-          :key="field.id"
-          :is="field.component"
-          v-bind="field.properties"
-        ></component>
+        <div :key="field.id">
+          <component :is="field.component" v-bind="field.properties"></component>
+        </div>
       </template>
-      <button>Submit</button>
+      <el-button type="primary">Submit</el-button>
     </component>
   </form>
 </template>
@@ -18,8 +16,10 @@
 <script lang="ts">
 import Vue from "vue";
 import { createFieldComponent, createFormResultFields } from "@/services/form";
+import { Button } from 'element-ui';
 
 export default Vue.extend({
+  components: { Button },
   props: {
     fields: {
       type: Array,
