@@ -1,9 +1,9 @@
 <template>
-  <form class="vue-cruder__form" :ref="name" v-on:submit="submit">
+  <!-- <form class="vue-cruder__form" :ref="name" v-on:submit="submit">
     <component :is="title ? 'fieldset' : 'div'">
       <legend v-if="title">{{ title }}</legend>
-      <span v-show="loading">Loading</span>
-      <template v-for="field of mountedFields">
+  <span v-show="loading">Loading</span>-->
+  <!-- <template v-for="field of mountedFields">
         <component
           :key="field.id"
           :is="field.component"
@@ -11,14 +11,27 @@
           v-model="models[field.id]"
           @input="updateValue($event, field)"
         ></component>
-      </template>
-      <mwc-button @click="formSubmit" raised label="Submit"></mwc-button>
-    </component>
-  </form>
+  </template>-->
+  <section>
+    <dynamic-form
+      :id="name"
+      :fields="fields"
+      @submitted="submit"
+      @error="errors"
+      @change="updateValues"
+    />
+    <!-- <button submit="true" :form="name">Submit</button> -->
+
+    <mwc-button @click="fakeSubmit" raised label="Submit"></mwc-button>
+  </section>
+  <!-- </component> -->
+  <!-- </form> -->
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { DynamicForm } from '@asigloo/vue-dynamic-forms';
+
 import {
   createFieldComponent,
   createFormResultFields,
@@ -26,6 +39,7 @@ import {
 } from "@/services/form";
 import "@material/mwc-button";
 export default Vue.extend({
+  components: { DynamicForm },
   props: {
     fields: {
       type: Array,
@@ -46,29 +60,24 @@ export default Vue.extend({
     models: {},
   }),
   methods: {
-    async submit($event) {
-      $event.preventDefault();
-
-      console.log(this.models);
-      // console.dir();
-      // const resultModel = createFormResultFields(
-      //   this.fields,
-      //   this.$refs[this.name]
-      // );
-      const resultModel = this.models;
-      if (this.service && this.service.create) {
-        try {
-          this.loading = true;
-          await this.service.create(resultModel);
-        } catch (err) {
-          return this.$emit("error", err);
-        } finally {
-          this.loading = false;
-        }
-      }
-
-      this.$emit("submit", resultModel);
+    submit(models) {
+      debugger
+      console.log(models)
+      this.$emit("submit", models);
     },
+
+    errors(errors) {
+      console.log(errors)
+      this.$emit("error", errors);
+    },
+    updateValues(values) {
+      this.models = values
+    },
+    fakeSubmit() {
+
+      this.$emit("submit", this.models);
+    },
+
     formSubmit($event) {
       $event.preventDefault();
       this.$refs[this.name].requestSubmit();

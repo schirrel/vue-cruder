@@ -21,3 +21,10 @@ export interface FormFieldOptions {
   type: FieldOptions;
   required?: boolean;
 }
+
+
+export interface ListHeader {
+  key: string
+  text: string
+  align?: string
+}

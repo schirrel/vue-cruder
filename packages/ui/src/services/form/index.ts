@@ -1,30 +1,29 @@
-import { Input , Checkbox, DatePicker} from 'element-ui';
 import { FieldOptions } from "@/components/models";
 
 export const createFieldComponent = (field) => {
   const props = { ...field };
   props.type = props.type.toLowerCase();
 
-  switch (field.type) {
-    case FieldOptions.TEXT:
-    case FieldOptions.PASSWORD:
-      return {
-        component: Input,
-        properties: props,
-      };
-      case FieldOptions.DATE:
-        return {
-          component:  DatePicker,
-          properties: props,
+  // switch (field.type) {
+  //   case FieldOptions.TEXT:
+  //   case FieldOptions.PASSWORD:
+  //     return {
+  //       component: Input,
+  //       properties: props,
+  //     };
+  //     case FieldOptions.DATE:
+  //       return {
+  //         component:  DatePicker,
+  //         properties: props,
 
-        }
-    case FieldOptions.BOOLEAN:
-      delete props.type;
-      return {
-        component: Checkbox,
-        properties: props,
-      };
-  }
+  //       }
+  //   case FieldOptions.BOOLEAN:
+  //     delete props.type;
+  //     return {
+  //       component: Checkbox,
+  //       properties: props,
+  //     };
+  // }
 };
 
 export const getFieldValue = (field, element) => {

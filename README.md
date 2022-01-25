@@ -119,3 +119,12 @@ These actions require a `callback` function that will be called once the actions
     />
 ```
 By adding `use-crud-actions` prop if will inject _edit_ and _delete_ actions to each row, and when one of the is clicked, it will perform `service.edit` or `service.delete`.
+
+
+
+## Libraries
+- [Axios](https://github.com/axios/axios)
+- [qs](https://github.com/ljharb/qs)
+- [Vue Dynamic Forms](https://github.com/asigloo/vue-dynamic-forms)
+- [Material Components Web](https://github.com/material-components/material-components-web)
+- [Material Web](https://github.com/material-components/material-web)

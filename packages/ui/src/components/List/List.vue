@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <dl class="vue-cruder__list" :key="row.id" v-for="row in items">
       <template v-for="header in headers">
         <dt :key="header.key">{{ header.text }}</dt>
@@ -11,13 +11,8 @@
           :value="row[header.key]"
           :key="header.name"
         >
-          <Editable
-            @onEdit="finishEdit(row)"
-            :editable="row.editable"
-            v-model="row[header.key]"
-          />
+          <Editable @onEdit="finishEdit(row)" :editable="row.editable" v-model="row[header.key]" />
 
-          <!-- {{ getValue(row, header.key) }} -->
         </dd>
       </template>
       <template v-if="listActions.length">
@@ -28,27 +23,59 @@
               <button @click="finishEdit(row)">Save Edit</button>
             </li>
             <li v-else v-for="action in listActions" :key="action.type">
-              <button @click="action.callback(row)">
-                {{ action.text }}
-              </button>
+              <button @click="action.callback(row)">{{ action.text }}</button>
             </li>
           </ol>
         </dd>
       </template>
     </dl>
+  </div>-->
+  <div class="mdc-data-table">
+    <div class="mdc-data-table__table-container">
+      <table class="mdc-data-table__table" aria-label="Dessert calories">
+        <thead>
+          <tr class="mdc-data-table__header-row">
+            <th
+              class="mdc-data-table__header-cell"
+              v-for="header in headers"
+              role="columnheader"
+              :key="header.key"
+            >{{ header.text }}</th>
+          </tr>
+        </thead>
+        <tbody class="mdc-data-table__content">
+          <tr class="mdc-data-table__row" v-for="row in items" :key="row">
+            <td class="mdc-data-table__cell" v-for="header in headers" :key="header.key">
+              {{
+                row[header.key]
+              }}
+            </td>
+            <!-- <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
+            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+            <td class="mdc-data-table__cell">Super tasty</td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import  { SimpleCRUD } from "@vue-cruder/core";
+import { SimpleCRUD } from "@vue-cruder/core";
+import { MDCDataTable } from '@material/data-table';
+import { ListHeader } from "../models";
 
-import Editable from "./Editable/Editable.vue";
+// import Editable from "./Editable/Editable.vue";
 export default Vue.extend({
   name: "List",
-  components: { Editable },
+  // components: { Editable },
   props: {
-    headers: Array,
+    headers: {
+      type: Array,
+      required: true
+    } as PropOptions<ListHeader[]>,
     service: {
       type: Object,
       required: true
@@ -96,6 +123,9 @@ export default Vue.extend({
 
     if (this.useCrudActions && !this.service)
       throw new Error("useCrudActions requires a service");
+
+
+    new MDCDataTable(this.$el)
   },
   methods: {
     getValue(column, header) {
@@ -197,4 +227,8 @@ export default Vue.extend({
 .vue-cruder__list__value--editable {
   border: 1px solid orange;
 }
+</style>
+
+<style lang="scss">
+@import "@material/data-table/mdc-data-table";
 </style>
