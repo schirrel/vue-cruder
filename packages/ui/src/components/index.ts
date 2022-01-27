@@ -1,3 +1,2 @@
-export * from "./models";
-export { default as Form } from "./Form";
+export * from "./List/models";
 export { default as List } from "./List";

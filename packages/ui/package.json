@@ -10,12 +10,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@asigloo/vue-dynamic-forms": "^2.1.0",
     "@material/data-table": "^13.0.0",
-    "@material/mwc-button": "^0.25.3",
-    "@material/mwc-formfield": "^0.25.3",
-    "@material/mwc-textarea": "^0.25.3",
-    "@material/mwc-textfield": "^0.25.3",
     "@vue-cruder/core": "file:../core",
     "vue": "^2.6.11"
   },
