@@ -24,15 +24,25 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install and Build
+      - name: Install and Bootstrap
         run: |
           npm install
           npm run bt
           cd packages/core
+          npm install
+          cd ../packages/ui
+          npm install
+          cd ../../
+          npm run bt
+
+      - name: Build
+        run: |
+          cd packages/core
           npm run build
           cd ../packages/ui
-          npm run
           npm run build
+
+        
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
