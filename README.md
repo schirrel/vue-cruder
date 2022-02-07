@@ -91,9 +91,8 @@ These actions require a `callback` function that will be called once the actions
 ```
 | Prop | Description |  
 |---|---|  
-|  use-crud-actions | inject _edit_ and _delete_ actions to each row, and when one of the is clicked, it will perform `service.edit` or `service.delete`.
- |  
-|  actions-condensed | Use the actions as context-menu |  
+| use-crud-actions | inject _edit_ and _delete_ actions to each row, and when one of the is clicked, it will perform `service.edit` or `service.delete`. |
+| actions-condensed | Use the actions as context-menu |  
 
 
 ## Libraries
