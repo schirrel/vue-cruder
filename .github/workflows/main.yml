@@ -23,26 +23,32 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+       
+       - name: Install Core deps
+        run: |
+          cd packages/core
+          npm install
 
-      - name: Install and Bootstrap
+       - name: Install UI deps
+        run: |
+          cd packages/ui
+          npm install
+
+       - name: Bootstrap
         run: |
           npm install
           npm run bt
-          cd packages/core
-          npm install
-          cd ../packages/ui
-          npm install
-          cd ../../
-          npm run bt
 
-      - name: Build
+      - name: Build Core
         run: |
           cd packages/core
           npm run build
-          cd ../packages/ui
+
+      - name: Build UI
+        run: |
+          cd /packages/ui
           npm run build
 
-        
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
