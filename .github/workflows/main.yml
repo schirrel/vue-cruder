@@ -27,28 +27,28 @@ jobs:
       - name: Install Core deps
         run: |
           cd packages/core
-          npm install
+          yarn
 
       - name: Bootstrap
         run: |
-          npm install
-          npm run bt
+          yarn
+          yarn run bt
 
       - name: Build Core
         run: |
           cd packages/core
-          npm run build
+          yarn run build
 
 
       - name: Install UI deps
         run: |
           cd packages/ui
-          npm install
+          yarn
 
       - name: Build UI
         run: |
           cd /packages/ui
-          npm run build
+          yarn run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
