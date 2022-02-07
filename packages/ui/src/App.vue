@@ -67,6 +67,7 @@
         </details>
       </div>
     </details>
+    <em> Look at DevTools's Network tab to see the requests </em>
   </div>
 </template>
 
