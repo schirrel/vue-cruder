@@ -26,13 +26,13 @@ jobs:
 
       - name: Install and Build
         run: |
-          yarn
-          yarn bt
+          npm install
+          npm run bt
           cd packages/core
-          yarn build
+          npm run build
           cd ../packages/ui
-          yarn
-          yarn build
+          npm run
+          npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
