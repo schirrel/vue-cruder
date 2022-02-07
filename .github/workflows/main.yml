@@ -24,17 +24,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
        
-       - name: Install Core deps
+      - name: Install Core deps
         run: |
           cd packages/core
           npm install
 
-       - name: Install UI deps
+      - name: Install UI deps
         run: |
           cd packages/ui
           npm install
 
-       - name: Bootstrap
+      - name: Bootstrap
         run: |
           npm install
           npm run bt
