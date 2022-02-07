@@ -47,7 +47,7 @@ jobs:
 
       - name: Build UI
         run: |
-          cd /packages/ui
+          cd packages/ui
           npm run build
 
       - name: Deploy
