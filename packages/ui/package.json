@@ -7,7 +7,7 @@
     "build": "vue-cli-service build  --target lib --name index src/main.ts",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "prepublish": "yarn build"
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "@material/button": "^13.0.0",
