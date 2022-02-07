@@ -20,5 +20,8 @@
     "lerna": "^4.0.0",
     "lint-staged": "^12.1.7",
     "yarn": "^1.22.17"
+  },
+  "dependencies": {
+    "axios": "^0.25.0"
   }
 }
