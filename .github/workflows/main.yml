@@ -29,11 +29,6 @@ jobs:
           cd packages/core
           npm install
 
-      - name: Install UI deps
-        run: |
-          cd packages/ui
-          npm install
-
       - name: Bootstrap
         run: |
           npm install
@@ -43,6 +38,12 @@ jobs:
         run: |
           cd packages/core
           npm run build
+
+
+      - name: Install UI deps
+        run: |
+          cd packages/ui
+          npm install
 
       - name: Build UI
         run: |
