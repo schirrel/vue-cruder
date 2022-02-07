@@ -2,6 +2,7 @@
 # Vue CRUDer
 
 An all in one Vue solution to help you create a CRUD based applications
+- [Demo](https://schirrel.dev/vue-cruder/)
 
 You can use as:
 
@@ -15,8 +16,7 @@ You can use as:
 
 It provides CRUD based services with HTTP request built in:
 
-- `read GET /:id`
-- `list GET` with query params, you can use as a simple search or pagination
+- `read GET ` it can recieve a `/:id` string or a params object `{}`, query params, so you can use as a simple search or pagination
 - `create POST` with body
 - `update PUT /:id` with body
 - `delete DELETE /:id` 
@@ -50,8 +50,8 @@ const services = createSimpleCRUD({
 });
 
 services.read("post-guid");
-services.list();
-services.list({ page: 1, size: 10 });
+services.read();
+services.read({ page: 1, size: 10 });
 services.create({
   /* post body */
 });
@@ -63,37 +63,8 @@ services.delete("post-guid");
 
 ### UI
 
-It provides a built `<Form>` and `<List>` components which self handle actions
-
-**Form**  
-It receives a list of field and their arguments, such as HTML props, and render a form enabling to create new entity.
-
-You can pass a `:service=""` to let the Form handle the C from the CRUD.
-It also emits `@submit` and `@error` events just in case you want to deal with it yourself.
-Example:
-
-```
-  <Form
-      name="profileForm"
-      title="New Profile
-      :fields="formFields"
-      @error="errorSaving"
-      :service="service"/node_modules>
-
-```
-
-```
-  <Form
-      name="tagForm"
-      title="New Tag
-      :fields="formFields"
-      @submit="save" />
-
-```
-
-
-
 **List**  
+> Powered by [Material Web Data Table](https://material.io/components/data-tables/web#using-data-tables)
 All lists require a `:service=""` which will be used to populate the list using the `service.list` function. Also, the `service` is used for CRUD actions if you choose to use them.
 
 
@@ -118,8 +89,11 @@ These actions require a `callback` function that will be called once the actions
       use-crud-actions
     />
 ```
-By adding `use-crud-actions` prop if will inject _edit_ and _delete_ actions to each row, and when one of the is clicked, it will perform `service.edit` or `service.delete`.
-
+| Prop | Description |  
+|---|---|  
+|  use-crud-actions | inject _edit_ and _delete_ actions to each row, and when one of the is clicked, it will perform `service.edit` or `service.delete`.
+ |  
+|  actions-condensed | Use the actions as context-menu |  
 
 
 ## Libraries
