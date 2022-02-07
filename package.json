@@ -5,7 +5,7 @@
   "repository": "git@github.com:schirrel/vue-cruder.git",
   "author": "Alan Schio <alanbschio@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -18,6 +18,7 @@
   "devDependencies": {
     "@vue/cli-plugin-typescript": "^4.5.15",
     "lerna": "^4.0.0",
-    "lint-staged": "^12.1.7"
+    "lint-staged": "^12.1.7",
+    "yarn": "^1.22.17"
   }
 }
