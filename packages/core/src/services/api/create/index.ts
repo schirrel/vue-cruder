@@ -7,7 +7,3 @@ export const create =
   ({ endpoint, object }: params) => {
     return api.post(endpoint || EMPTY_URI, object);
   };
-
-export const createSimple = (api: AxiosInstance) => (body) => {
-  return api.post(EMPTY_URI, body);
-};

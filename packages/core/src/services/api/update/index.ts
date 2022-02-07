@@ -8,10 +8,3 @@ export const update =
 
     api.put(`${endpoint}/${id}`, object);
   };
-
-export const updateSimple =
-  (api: AxiosInstance) => (id: string, object: unknown) => {
-    if (!id) throw Error("id is required");
-
-    api.put(`/${id}`, object);
-  };

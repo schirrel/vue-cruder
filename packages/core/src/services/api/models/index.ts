@@ -16,9 +16,8 @@ export interface CRUD {
 }
 
 export interface SimpleCRUD {
-  read: (id: string) => Promise<AxiosResponse<any, any>>;
-  list: (params: params) => Promise<AxiosResponse<any, any>>;
+  read: (args: string | params) => Promise<AxiosResponse<any, any>>;
   create: ({ endpoint, object }: params) => Promise<AxiosResponse<any, any>>;
   update: (id, object) => void;
-  delete: (id : string) => Promise<AxiosResponse<any, any>>;
+  delete: (id: string) => Promise<AxiosResponse<any, any>>;
 }

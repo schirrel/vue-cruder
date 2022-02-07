@@ -25,3 +25,11 @@ export const readSimple = (api: AxiosInstance) => (id: string) => {
 export const listSimple = (api: AxiosInstance) => (params) => {
   return api.get(EMPTY_URI, { params });
 };
+
+export const _read = (api: AxiosInstance) => (args) => {
+  if (typeof args === "string") {
+    return readSimple(api)(args);
+  } else {
+    return listSimple(api)(args);
+  }
+};
