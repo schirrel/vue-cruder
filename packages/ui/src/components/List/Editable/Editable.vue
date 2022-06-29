@@ -1,5 +1,5 @@
 <template>
-  <p
+  <p class="vue-cruder__list-column--editable" 
     ref="editable"
     v-bind:contenteditable="editable"
     v-on="listeners"
@@ -38,3 +38,9 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+.vue-cruder__list-column--editable {
+  background: #cecece;
+}
+</style>
