@@ -1,92 +1,117 @@
 <template>
   <div id="app">
+    <h1>Playground</h1>
     <details class="collapse">
-      <summary class="title">Normal List</summary>
+      <summary class="title">General</summary>
       <div class="description">
-        <List
-          v-if="service"
-          id="normal-list"
-          :service="service"
-          :headers="headers"
-        />
+        <Button @click="model = 'click'"> Clique </Button>
+      </div>
+    </details>
+    <details class="collapse">
+      <summary class="title">Form</summary>
+      <div class="description">
+        <Form v-if="service" title="My Form" :service="service">
+          <Input v-model="model" />
+        </Form>
       </div>
     </details>
 
     <details class="collapse">
-      <summary class="title">With actions</summary>
+      <summary class="title">List</summary>
       <div class="description">
         <details class="collapse">
-          <summary class="title">With Custom Action</summary>
+          <summary class="title">Normal List</summary>
           <div class="description">
             <List
               v-if="service"
+              id="normal-list"
               :service="service"
               :headers="headers"
-              :actions="actions"
             />
           </div>
         </details>
-        <details class="collapse">
-          <summary class="title">
-            With Custom Action and Actions Condensed
-          </summary>
-          <div class="description">
-            Prop <code> actions-condensed </code><br />
 
-            <List
-              v-if="service"
-              :service="service"
-              :headers="headers"
-              :actions="actions"
-              actions-condensed
-            />
-          </div>
-        </details>
         <details class="collapse">
-          <summary class="title">With CRUD Action</summary>
+          <summary class="title">With actions</summary>
           <div class="description">
-            Prop <code> use-crud-actions </code> <br />
-            <List
-              v-if="service"
-              :service="service"
-              :headers="headers"
-              use-crud-actions
-            />
+            <details class="collapse">
+              <summary class="title">With Custom Action</summary>
+              <div class="description">
+                <List
+                  v-if="service"
+                  :service="service"
+                  :headers="headers"
+                  :actions="actions"
+                />
+              </div>
+            </details>
+            <details class="collapse">
+              <summary class="title">
+                With Custom Action and Actions Condensed
+              </summary>
+              <div class="description">
+                Prop <code> actions-condensed </code><br />
+
+                <List
+                  v-if="service"
+                  :service="service"
+                  :headers="headers"
+                  :actions="actions"
+                  actions-condensed
+                />
+              </div>
+            </details>
+            <details class="collapse">
+              <summary class="title">With CRUD Action</summary>
+              <div class="description">
+                Prop <code> use-crud-actions </code> <br />
+                <List
+                  v-if="service"
+                  :service="service"
+                  :headers="headers"
+                  use-crud-actions
+                />
+              </div>
+            </details>
+            <details class="collapse">
+              <summary class="title">
+                With CRUD Action and Actions condensed
+              </summary>
+              <div class="description">
+                Prop <code> use-crud-actions </code> and
+                <code>actions-condensed</code><br />
+                <List
+                  v-if="service"
+                  :service="service"
+                  :headers="headers"
+                  use-crud-actions
+                  actions-condensed
+                />
+              </div>
+            </details>
           </div>
         </details>
-        <details class="collapse">
-          <summary class="title">
-            With CRUD Action and Actions condensed
-          </summary>
-          <div class="description">
-            Prop <code> use-crud-actions </code> and
-            <code>actions-condensed</code><br />
-            <List
-              v-if="service"
-              :service="service"
-              :headers="headers"
-              use-crud-actions
-              actions-condensed
-            />
-          </div>
-        </details>
+        <em> Look at DevTools's Network tab to see the requests </em>
       </div>
     </details>
-    <em> Look at DevTools's Network tab to see the requests </em>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
-import { List } from "./index";
+import { List, Input, Form, Button } from "./index";
 
 export default Vue.extend({
   name: "App",
   components: {
     List,
+    Input,
+    Button,
+    Form,
   },
   data: () => ({
+    model: "",
     service: null,
 
     headers: [

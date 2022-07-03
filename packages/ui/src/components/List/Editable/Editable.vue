@@ -41,7 +41,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@import "@material/textfield/mdc-text-field.scss";
 .vue-cruder__list-column--editable {
   padding: 4px 8px;
 }
