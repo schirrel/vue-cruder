@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-typescript": "^4.5.15",
-    "lerna": "^4.0.0",
+    "lerna": "5.1.0",
     "lint-staged": "^12.1.7",
     "yarn": "^1.22.17"
   },

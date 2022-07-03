@@ -74,7 +74,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
-import List from "@/components/List/List.vue";
+import {List} from "@vue-cruder/ui";
 
 export default Vue.extend({
   name: "App",
