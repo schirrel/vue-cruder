@@ -1,1 +1,1 @@
-export const EMPTY_URI = "";
+export const EMPTY_URI = "/";
