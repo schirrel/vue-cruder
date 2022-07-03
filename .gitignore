@@ -105,3 +105,6 @@ dist
 .tern-port
 
 .npmrc
+
+*.lock
+*-lock.json
