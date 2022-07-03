@@ -1,26 +1,11 @@
 <template>
-  <!-- <p
+  <p
     class="vue-cruder__list-column--editable"
     ref="editable"
     v-bind:contenteditable="editable"
     v-on="listeners"
     @keydown.enter="onEdit"
-  /> -->
-  <label
-    class="mdc-text-field mdc-text-field--outlined mdc-text-field--no-label"
-  >
-    <span class="mdc-notched-outline">
-      <span class="mdc-notched-outline__leading"></span>
-      <span class="mdc-notched-outline__trailing"></span>
-    </span>
-    <input
-      class="mdc-text-field__input"
-      type="text"
-      aria-label="Label"
-      :value="value"
-      @change="onInput"
-    />
-  </label>
+  />
 </template>
 
 <script lang="ts">
@@ -41,9 +26,6 @@ export default Vue.extend({
       return { ...this.$listeners, input: this.onInput };
     },
   },
-  watch: {
-    value() {},
-  },
   mounted() {
     if (this.$refs.editable) this.$refs.editable.innerText = this.value;
   },
@@ -58,8 +40,14 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style lang="scss">
+@import "@material/textfield/mdc-text-field.scss";
+.vue-cruder__list-column--editable {
+  padding: 4px 8px;
+}
 .vue-cruder__list-column--editable[contenteditable="true"] {
-  background: #cecece;
+  background: #f2f2f2;
+  outline: 1px solid silver;
+  border-radius: 2px;
 }
 </style>

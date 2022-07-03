@@ -1,7 +1,7 @@
 <template>
   <div class="mdc-data-table">
     <div class="mdc-data-table__table-container">
-      <table class="mdc-data-table__table" aria-label="Dessert calories">
+      <table class="mdc-data-table__table">
         <thead>
           <tr class="mdc-data-table__header-row">
             <th
@@ -9,6 +9,7 @@
               v-for="header in headers"
               role="columnheader"
               :key="header.key"
+              scope="col"
             >
               {{ header.text }}
             </th>
@@ -16,6 +17,7 @@
               role="columnheader"
               class="mdc-data-table__header-cell"
               v-if="listActions.length"
+              scope="col"
             >
               Ações
             </th>
@@ -25,6 +27,7 @@
           <tr class="mdc-data-table__row" v-for="row in items" :key="row.id">
             <td
               class="mdc-data-table__cell"
+              scope="row"
               v-for="header in headers"
               :key="header.key"
             >
@@ -41,6 +44,7 @@
               <template v-if="actionsCondensed">
                 <div id="demo-menu" class="mdc-menu-surface--anchor">
                   <button
+                    type="button"
                     class="mdc-button"
                     id="menu-button"
                     @click="toggleMenu($event)"
@@ -70,6 +74,7 @@
                 <li v-if="row.editable">
                   <div class="mdc-touch-target-wrapper">
                     <button
+                      type="button"
                       class="mdc-button mdc-button--raised"
                       @click="finishEdit(row)"
                     >
@@ -82,6 +87,7 @@
                 <li v-else v-for="action in listActions" :key="action.type">
                   <div class="mdc-touch-target-wrapper">
                     <button
+                      type="button"
                       class="mdc-button mdc-button--raised"
                       @click="action.callback(row)"
                     >
@@ -133,6 +139,7 @@ export default Vue.extend({
   data() {
     return {
       items: [],
+      table: null,
     };
   },
   computed: {
@@ -171,7 +178,7 @@ export default Vue.extend({
   },
   methods: {
     initElements() {
-      new MDCDataTable(this.$el);
+      // this.table = new MDCDataTable(this.$el);
       Array.from(document.querySelectorAll(".mdc-button")).forEach((each) => {
         new MDCRipple(each);
       });
@@ -208,6 +215,7 @@ export default Vue.extend({
     },
     finishEdit(row) {
       row.editable = false;
+
       this.$forceUpdate();
     },
     toggleMenu(event) {
