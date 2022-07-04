@@ -23,6 +23,29 @@ export default {
     label: {
       type: String,
     },
+    required: {
+      type: Boolean,
+    },
+    disabled: {
+      type: Boolean,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    validations: {
+      type: Array,
+    },
+    validation: {
+      type: Function,
+    },
+    disabledValidation: {
+      type: Function,
+    },
   },
   methods: {
     update(event) {
