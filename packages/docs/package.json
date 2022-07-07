@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:build": "vitepress build docs --esbuildTarget es2019",
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
