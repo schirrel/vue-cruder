@@ -14,7 +14,7 @@ hero:
       link: https://github.com/schirrel/vue-cruder
     - theme: brand
       text: Demo
-      link: https://schirrel.dev/vue-cruder/
+      link: https://schirrel.dev/vue-cruder/demo
 
 features:
   - icon: ⚡️

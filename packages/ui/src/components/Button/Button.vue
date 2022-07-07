@@ -1,9 +1,8 @@
 <template>
   <button
     :type="type"
-    class="mdc-button mdc-button--raised"
-    v-bind="{ ...$props, ...$attrs }"
-    v-on="$listeners"
+    :class="`mdc-button mdc-button${cssClass}`"
+    @click="$emit('click')"
   >
     <span class="mdc-button__ripple"></span>
     <span class="mdc-button__touch"></span>
@@ -13,15 +12,36 @@
   </button>
 </template>
 
-<script>
-import Vue from "vue";
+<script lang="ts">
+import Vue, { PropOptions } from "vue";
 import { MDCRipple } from "@material/ripple";
+
+type VariantOptions = "contained" | "text" | "outlined";
+type TypeOptions = "button" | "submit" | "reset";
 
 export default Vue.extend({
   props: {
     type: {
       type: String,
       default: "button",
+    } as PropOptions<TypeOptions>,
+    variant: {
+      type: String,
+      default: "contained",
+    } as PropOptions<VariantOptions>,
+  },
+  computed: {
+    cssClass() {
+      switch (this.variant) {
+        case "contained":
+          return "--raised";
+        case "text":
+          return "";
+        case "outlined":
+          return "--outlined";
+        default:
+          return "";
+      }
     },
   },
   mounted() {

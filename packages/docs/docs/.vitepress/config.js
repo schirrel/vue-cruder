@@ -34,6 +34,7 @@ export default {
           text: "UI",
           items: [
             { text: "Components", link: "/ui/components/" },
+            { text: "Button", link: "/ui/components/button" },
             { text: "Form", link: "/ui/components/form" },
             { text: "Form Fields", link: "/ui/components/fields" },
             { text: "List", link: "/ui/components/list" },

@@ -4,7 +4,24 @@
     <details class="collapse">
       <summary class="title">General</summary>
       <div class="description">
-        <Button @click="model = 'click'"> Clique </Button>
+        <p>Type</p>
+        <div class="horizontal">
+          <Button @click="model = 'click'"> Button </Button>
+          <Button type="submit" @click="model = 'click'"> Submit </Button>
+          <Button type="reset" @click="model = 'click'"> Reset </Button>
+        </div>
+        <p>Variant</p>
+        <div class="horizontal">
+          <Button @click="model = 'click'"> Default </Button>
+
+          <Button variant="text" @click="model = 'click'"> Text </Button>
+
+          <Button variant="outlined" @click="model = 'click'">
+            Outlined
+          </Button>
+
+          <Button variant="contained" @click="model = 'click'"> contained </Button>
+        </div>
       </div>
     </details>
     <details class="collapse">
@@ -246,5 +263,10 @@ details {
   font-size: 14px;
   line-height: 21px;
   padding: var(--space-sm);
+}
+
+.horizontal {
+  gap: 8px;
+  display: flex;
 }
 </style>
