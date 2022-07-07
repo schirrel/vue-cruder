@@ -33,10 +33,17 @@ jobs:
         run: |
           cd packages/ui
           npm run build:demo
+
+      - name: Install DOCS deps
+        run: |
+          cd packages/docs
+          npm install
+          
       - name: Build DOCS
         run: |
           cd packages/docs
           npm run docs:build
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
