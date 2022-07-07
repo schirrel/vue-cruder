@@ -8,8 +8,15 @@ import { SimpleCRUD } from "./models";
 
 import { serviceFactory } from "./service";
 
-export const createSimpleCRUD = (config: AxiosRequestConfig): SimpleCRUD => {
-  const api = serviceFactory(config);
+const isAxiosRequestConfig = (config: AxiosRequestConfig | string): config is AxiosRequestConfig => {
+  return (<AxiosRequestConfig>config).baseURL !== undefined;
+}
+
+export const createSimpleCRUD = (config: AxiosRequestConfig | string): SimpleCRUD => {
+  const _config = isAxiosRequestConfig(config) ? config : {
+    baseUrl: config
+  }
+  const api = serviceFactory(_config as AxiosRequestConfig);
 
   return {
     read: read(api),
