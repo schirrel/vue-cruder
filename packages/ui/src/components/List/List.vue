@@ -109,7 +109,7 @@
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { SimpleCRUD } from "@vue-cruder/core";
-import { MDCDataTable } from "@material/data-table";
+// import { MDCDataTable } from "@material/data-table";
 import { MDCRipple } from "@material/ripple";
 import { MDCMenu } from "@material/menu";
 import { MDCList } from "@material/list";

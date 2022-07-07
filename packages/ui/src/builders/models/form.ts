@@ -1,7 +1,16 @@
-import { FieldOptions } from "./field"
+import { Field, FieldOptions } from "./field";
 
 export interface FormBuilder {
-    fields: FieldOptions[]
-    submit: Function
-    validate: Function
+  title?: string
+  fields: FieldOptions[]
+  submit?: () => void
+  validate?: () => void
+  onSuccess?: () => void
+  onError?: () => void
+}
+
+export interface FormBuild {
+  fields: Field[];
+  submit?: () => void;
+  validate?: () => void;
 }

@@ -1,14 +1,15 @@
 <template>
   <label class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <span v-if="label" class="mdc-floating-label" id="my-label">{{
-      label
-    }}</span>
+    <span
+      v-if="label"
+      class="mdc-floating-label mdc-floating-label--float-above"
+      >{{ label }}</span
+    >
     <input
-      type="text"
       class="mdc-text-field__input"
       aria-labelledby="my-label"
-      v-bind="{ ...$props, ...$attrs }"
+      v-bind="{ ...$props, ...$attrs, ...computedProps }"
       :value="value"
       @input="update"
     />
@@ -16,8 +17,9 @@
   </label>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
   props: {
     value: {},
     label: {
@@ -28,10 +30,6 @@ export default {
     },
     disabled: {
       type: Boolean,
-    },
-    name: {
-      type: String,
-      required: true,
     },
     id: {
       type: String,
@@ -47,12 +45,20 @@ export default {
       type: Function,
     },
   },
+  computed: {
+    computedProps() {
+      return {
+        name: this.id,
+        "data-testid": this.id,
+      };
+    },
+  },
   methods: {
     update(event) {
       this.$emit("input", event.target.value);
     },
   },
-};
+});
 </script>
 
 <style lang="scss">

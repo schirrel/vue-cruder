@@ -1,18 +1,34 @@
 <template>
-  <form class="vue-cruder__form"  @submit.prevent="submit">
+  <form class="vue-cruder__form" @submit.prevent="submit">
     <div class="mdc-card">
-      <div class="mdc-card__content">
-        <slot />
+      <header class="vue-cruder__form__title" v-if="options.title">
+        {{ options.title }}
+      </header>
+
+      <pre><code> {{models}} </code></pre>
+      <div class="mdc-card__content vue-cruder__form__content" v-if="form">
+        <template v-for="field of form.fields">
+          <component
+            :key="field.options.id"
+            :is="field.component"
+            v-bind="field.options"
+            v-model="models[field.options.id]"
+          />
+        </template>
       </div>
       <div class="mdc-card__actions">
         <div class="mdc-card__action-buttons">
-          <button class="mdc-button mdc-card__action mdc-card__action--button">
+          <button
+            class="mdc-button mdc-card__action mdc-card__action--button"
+            type="button"
+            @click="cancel"
+          >
             <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Action 1</span>
+            <span class="mdc-button__label">Desistir</span>
           </button>
           <button class="mdc-button mdc-card__action mdc-card__action--button">
             <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Action 2</span>
+            <span class="mdc-button__label">Salvar</span>
           </button>
         </div>
       </div>
@@ -23,6 +39,8 @@
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { SimpleCRUD } from "@vue-cruder/core";
+import { FormBuilder } from "../../builders/models";
+import { formBuilder } from "../../builders/form";
 
 export default Vue.extend({
   name: "List",
@@ -31,15 +49,42 @@ export default Vue.extend({
       type: Object,
       required: true,
     } as PropOptions<SimpleCRUD>,
-    title: { type: String },
+    options: {
+      type: Object,
+      required: true,
+    } as PropOptions<FormBuilder>,
   },
   data() {
-    return {};
+    return {
+      form: null,
+      models: {},
+    };
+  },
+  watch: {
+    options() {
+      this.form = formBuilder(this.options);
+    },
   },
   methods: {
-    submit() {
-      console.log("hehe");
+    async submit() {
+      console.log("Submited");
+      if (this.options.submit) {
+        return this.options.submit(this.models);
+      }
+      try {
+        const response = await this.service.create(this.models);
+        this.options?.onSuccess?.(response);
+      } catch (err) {
+        this.options?.onError?.(err);
+      }
     },
+    cancel() {
+      console.log("cancel");
+    },
+  },
+  mounted() {
+    console.log("options", this.options);
+    this.form = formBuilder(this.options);
   },
 });
 </script>
@@ -48,5 +93,17 @@ export default Vue.extend({
 @import "@material/card/mdc-card.scss";
 .vue-cruder__form {
   width: 100%;
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    padding: 12px 8px;
+  }
+}
+.vue-cruder__form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 }
 </style>

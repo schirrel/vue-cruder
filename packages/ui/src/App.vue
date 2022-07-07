@@ -10,8 +10,12 @@
     <details class="collapse">
       <summary class="title">Form</summary>
       <div class="description">
-        <Form v-if="service" title="My Form" :service="service">
-          <Input v-model="model" />
+        <Form
+          v-if="service"
+          title="My Form"
+          :service="service"
+          :options="formOptions"
+        >
         </Form>
       </div>
     </details>
@@ -100,19 +104,41 @@
 <script lang="ts">
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
-import { List, Input, Form, Button } from "./index";
+import { List, Form, Button } from "./index";
 
 export default Vue.extend({
   name: "App",
   components: {
     List,
-    Input,
     Button,
     Form,
   },
   data: () => ({
     model: "",
     service: null,
+    formOptions: {
+      title: "Create form",
+      onSuccess: () => {
+        alert("Suuuuuucesso");
+      },
+      onError: (err) => {
+        console.log(err);
+      },
+      fields: [
+        {
+          id: "name",
+          type: "text",
+          validations: ["required", "maxlength:120", "minlength:10"],
+          label: "Name",
+        },
+        {
+          id: "age",
+          type: "number",
+          validations: ["required", "minvalue:12"],
+          label: "Age",
+        },
+      ],
+    },
 
     headers: [
       {

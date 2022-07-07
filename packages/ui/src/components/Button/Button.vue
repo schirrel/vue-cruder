@@ -1,6 +1,6 @@
 <template>
   <button
-    type="button"
+    :type="type"
     class="mdc-button mdc-button--raised"
     v-bind="{ ...$props, ...$attrs }"
     v-on="$listeners"
@@ -14,13 +14,20 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { MDCRipple } from "@material/ripple";
 
-export default {
+export default Vue.extend({
+  props: {
+    type: {
+      type: String,
+      default: "button",
+    },
+  },
   mounted() {
     new MDCRipple(this.$el);
   },
-};
+});
 </script>
 
 <style lang="scss">
