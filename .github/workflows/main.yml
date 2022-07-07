@@ -33,10 +33,13 @@ jobs:
         run: |
           cd packages/ui
           npm run build:demo
-
+     - name: Build DOCS
+        run: |
+          cd packages/docs
+          npm run docs:build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: packages/ui/dist
+          FOLDER: packages/docs/.vitepress/dist
