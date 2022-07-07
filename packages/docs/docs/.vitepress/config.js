@@ -2,6 +2,9 @@ export default {
   title: "Vue CRUDer",
   description: "CRUD maker",
   themeConfig: {
+    footer: {
+      copyright: 'Copyright © 2022-present Alan Balen Schio'
+    },
     nav: [
       {
         text: "Core",
@@ -29,9 +32,10 @@ export default {
         {
           text: "UI",
           items: [
-            { text: "Components", link: "/components/" },
-            { text: "Form", link: "/components/form" },
-            { text: "List", link: "/components/list" },
+            { text: "Components", link: "/ui/components/" },
+            { text: "Form", link: "/ui/components/form" },
+            { text: "Form Fields", link: "/ui/components/fields" },
+            { text: "List", link: "/ui/components/list" },
           ],
         },
       ],
