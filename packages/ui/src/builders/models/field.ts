@@ -18,10 +18,6 @@ export interface FieldOptions {
   label: string;
   validations: string[];
   type: FieldType;
-  required: boolean;
-  disabled: boolean;
-  disabledValidation: () => void;
-  validation: () => void;
 }
 
 export interface Field {
