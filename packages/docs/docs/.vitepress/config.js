@@ -1,9 +1,10 @@
 export default {
+  base: "/vue-cruder/",
   title: "Vue CRUDer",
   description: "CRUD maker",
   themeConfig: {
     footer: {
-      copyright: 'Copyright © 2022-present Alan Balen Schio'
+      copyright: "Copyright © 2022-present Alan Balen Schio",
     },
     nav: [
       {

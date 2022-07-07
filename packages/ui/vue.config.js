@@ -1,9 +1,12 @@
-module.exports = (args) => {
-  console.log(process.env);
-  return {
-    outputDir:
-      process.env.NODE_ENV === "production"
-        ? "./dist"
-        : "../docs/docs/public/demo",
-  };
+const demoConfig = {
+  publicPath: "/vue-cruder/demo/",
+  outputDir: "../docs/docs/public/demo",
+};
+
+const libConfig = {
+  outputDir: "./dist",
+};
+
+module.exports = () => {
+  return process.env.NODE_ENV === "production" ? libConfig : demoConfig;
 };
