@@ -1,6 +1,6 @@
 import { Field, FieldOptions } from "./field";
 
-export interface FormBuilder {
+export interface FormOptions {
   title?: string
   fields: FieldOptions[]
   submit?: () => void

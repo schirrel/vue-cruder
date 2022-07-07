@@ -16,7 +16,7 @@
     "@material/data-table": "^13.0.0",
     "@material/menu": "^13.0.0",
     "@material/textfield": "^14.0.0",
-    "@vue-cruder/core": "^0.1.4",
+    "@vue-cruder/core": "file:../core",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },

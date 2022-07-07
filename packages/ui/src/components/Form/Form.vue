@@ -39,7 +39,7 @@
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { SimpleCRUD } from "@vue-cruder/core";
-import { FormBuilder } from "../../builders/models";
+import { FormOptions } from "../../builders/models";
 import { formBuilder } from "../../builders/form";
 
 export default Vue.extend({
@@ -52,7 +52,7 @@ export default Vue.extend({
     options: {
       type: Object,
       required: true,
-    } as PropOptions<FormBuilder>,
+    } as PropOptions<FormOptions>,
   },
   data() {
     return {
