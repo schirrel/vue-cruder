@@ -33,7 +33,7 @@ jobs:
         run: |
           cd packages/ui
           npm run build:demo
-     - name: Build DOCS
+      - name: Build DOCS
         run: |
           cd packages/docs
           npm run docs:build
