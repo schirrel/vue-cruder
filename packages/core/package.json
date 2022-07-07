@@ -1,6 +1,6 @@
 {
   "name": "@vue-cruder/core",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,10 +15,10 @@
   },
   "author": "@schirrel",
   "dependencies": {
-    "axios": "^0.24.0",
     "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
+    "axios": "^0.24.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "jest": "^27.4.7",
