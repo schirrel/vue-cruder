@@ -1,5 +1,5 @@
 import {
-  CreatePageProvider,
+  CreatePage,
   EditPage,
   DeletePage,
   ListPage,
@@ -23,7 +23,7 @@ const componentByType = ({
 }: ComponentProvider) => {
   switch (type) {
     case "create":
-      return CreatePageProvider;
+      return CreatePage;
     case "read":
       return ReadPage;
     case "update":
