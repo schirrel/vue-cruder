@@ -42,7 +42,7 @@ const fieldValidator = {
 export const buildValidations = (validations: string[]): any => {
   const validationProps: any[] = [];
 
-  validations.forEach((validation) => {
+  validations?.forEach((validation) => {
     const validator = fieldValidator as any;
     const parts = validation.split(":");
     const validationName: string = parts[0];
@@ -53,8 +53,7 @@ export const buildValidations = (validations: string[]): any => {
     }
   });
 
-
-  const mapped = validationProps.map(item => item);
+  const mapped = validationProps.map((item) => item);
   const finalValidation = Object.assign({}, ...mapped);
   return finalValidation;
 };

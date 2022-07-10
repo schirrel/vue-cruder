@@ -14,10 +14,9 @@ const isAxiosRequestConfig = (config: AxiosRequestConfig | string): config is Ax
 
 export const createSimpleCRUD = (config: AxiosRequestConfig | string): SimpleCRUD => {
   const _config = isAxiosRequestConfig(config) ? config : {
-    baseUrl: config
+    baseURL: config
   }
   const api = serviceFactory(_config as AxiosRequestConfig);
-
   return {
     read: read(api),
     create: create(api),

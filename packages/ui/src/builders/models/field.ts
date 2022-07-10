@@ -9,9 +9,6 @@ export type FieldType =
   | "select"
   | "checkbox"
   | "radio";
-// export type FieldValidation = 'required' | 'empty' | 'max' | 'min' | 'maxlength'
-//     | 'minlength' | 'custom'
-
 
 export interface FieldOptions {
   id: string;
@@ -23,5 +20,4 @@ export interface FieldOptions {
 export interface Field {
   component: VueConstructor<Vue>;
   options: FieldOptions;
-  validation: () => void;
 }
