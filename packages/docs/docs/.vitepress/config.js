@@ -22,6 +22,9 @@ export default {
         link: "https://schirrel.dev/vue-cruder/demo",
       },
     ],
+    socialLinks: [
+      { icon: "github", link: "https://github.com/schirrel/vue-cruder" },
+    ],
     sidebar: {
       "/core/": [
         {
