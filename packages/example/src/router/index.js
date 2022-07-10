@@ -40,9 +40,6 @@ const otherRoute = createRoute({
     resourceName: "update",
   },
 });
-otherRoute.props = () => {
-  return { topUser: "123", type: "update", resourceName: "update" };
-};
 
 routes.push(otherRoute);
 

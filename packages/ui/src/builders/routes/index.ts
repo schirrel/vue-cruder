@@ -18,12 +18,7 @@ export const createRoute = ({ name, path, options }: RouteProvider) => {
     name,
     path,
     component,
-    props: {
-      ...options, user: {
-        firstName: "John",
-        lastName: "Snow",
-      },
-    },
+    props: options,
     meta: { ...options }
   };
 };

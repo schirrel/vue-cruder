@@ -1,31 +1,4 @@
-
-import { createSimpleCRUD } from "@vue-cruder/core";
-import Vue from "vue";
-
-
-const createPageComponent = Vue.extend({
-    name: "CreatePage",
-    props: {
-        resourceName: {
-            type: String,
-            required: true,
-        },
-    },
-    data() {
-        return {
-            id: "",
-            form: {},
-            service: createSimpleCRUD(this.resourceName),
-        };
-    },
-    methods: {
-        update() {
-            this.service.create({
-                object: this.form,
-            });
-        },
-    },
-});
+import CreatePageComponent from "./Create.vue";
 
 export const CreatePage = {
     name: "CreatePage",
@@ -42,7 +15,7 @@ export const CreatePage = {
         };
     },
     mounted() {
-        console.log('EditPage', this)
+        console.log('CreatePage', this)
     },
 
     render(createElement: any, context: any) {
@@ -50,7 +23,10 @@ export const CreatePage = {
         const data = context?.data
         const attrs = data?.attrs
         const resourceName = attrs?.resourceName
-        return createElement("h1", "Edit:, resourceName = " + resourceName);
+        return createElement("div",
+            [createElement("h1", "Create:, resourceName = " + resourceName),
+            createElement(CreatePageComponent, data)
+            ]);
     },
 }
 
