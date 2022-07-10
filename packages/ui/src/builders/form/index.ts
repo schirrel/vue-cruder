@@ -4,7 +4,7 @@ import { buildField } from "../field";
 
 export const formBuilder = (builderOptions: FormOptions): FormBuild => {
   const fields: Field[] = [];
-  const { submit, validate } = builderOptions;
+  const { onSubmit, validate } = builderOptions;
 
   builderOptions.fields.forEach((each) => {
     fields.push(buildField(each));
@@ -12,7 +12,7 @@ export const formBuilder = (builderOptions: FormOptions): FormBuild => {
 
   return {
     fields,
-    submit,
+    onSubmit,
     validate,
   };
 };

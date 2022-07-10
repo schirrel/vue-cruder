@@ -12,6 +12,6 @@ export interface FormOptions {
 
 export interface FormBuild {
   fields: Field[];
-  submit?: () => void;
+  onSubmit?: () => void;
   validate?: () => void;
 }
