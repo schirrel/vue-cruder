@@ -1,0 +1,1 @@
+import{_ as s,c as t,o as e,a as o}from"./app.ddc7ff42.js";const u=JSON.parse('{"title":"Providers","description":"","frontmatter":{},"headers":[],"relativePath":"ui/providers/index.md"}'),a={name:"ui/providers/index.md"},n=o("",9),p=[n];function r(l,c,d,D,i,y){return e(),t("div",null,p)}var h=s(a,[["render",r]]);export{u as __pageData,h as default};
