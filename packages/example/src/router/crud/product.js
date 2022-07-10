@@ -4,10 +4,11 @@ const createProduct = createRoute({
   name: "createProduct",
   path: "/product",
   options: {
+    title: "Create a New Product",
+    description: "We are gonna use cars for the example",
     type: "create",
     resourceName: "https://jsonplaceholder.typicode.com/posts",
     formOptions: {
-      title: "Create Product",
       onSuccess: () => {
         alert("Suuuuuucesso");
       },

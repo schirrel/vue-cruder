@@ -124,8 +124,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
-import { List, Form, Button } from "./index";
-import { createRoute } from "./builders/routes/index";
+import { List, Form, Button, createRoute } from "@vue-cruder/ui";
 export default Vue.extend({
   name: "App",
   components: {

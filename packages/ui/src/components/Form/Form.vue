@@ -4,8 +4,6 @@
       <header class="vue-cruder__form__title" v-if="options.title">
         {{ options.title }}
       </header>
-
-      <pre><code> {{models}} </code></pre>
       <div class="mdc-card__content vue-cruder__form__content" v-if="form">
         <template v-for="field of form.fields">
           <component

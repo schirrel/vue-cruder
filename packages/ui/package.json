@@ -1,10 +1,9 @@
 {
   "name": "ui",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:demo": "vue-cli-service build --mode development",
     "build": "vue-cli-service build --target lib --name index src/index.ts",
     "lint": "vue-cli-service lint --fix"
   },

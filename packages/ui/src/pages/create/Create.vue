@@ -1,12 +1,8 @@
 <template>
   <main>
-    Create Page with {{ resourceName }}
-    <Form
-      v-if="service"
-      :service="service"
-      :options="formOptions"
-    >
-    </Form>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <Form v-if="service" :service="service" :options="formOptions"> </Form>
   </main>
 </template>
 
@@ -20,6 +16,13 @@ export default Vue.extend({
   name: "CreatePageComponent",
   components: { Form },
   props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
     resourceName: {
       type: String,
       required: true,
@@ -33,7 +36,7 @@ export default Vue.extend({
     return {
       id: "",
       form: {},
-      service: createSimpleCRUD(this.resourceName),
+      service: {},
     };
   },
   methods: {
@@ -43,7 +46,14 @@ export default Vue.extend({
       });
     },
   },
+  watch: {
+    resourceName() {
+      this.service = createSimpleCRUD(this.resourceName);
+    },
+  },
   mounted() {
+    console.log(this.resourceName);
+    this.service = createSimpleCRUD(this.resourceName);
     console.log("CreatePageComponent", this);
   },
 });

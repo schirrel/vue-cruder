@@ -1,34 +1,26 @@
 import CreatePageComponent from "./Create.vue";
 
 export const CreatePage = {
-    name: "CreatePage",
-    props: {
-        resourceName: {
-            type: String,
-            required: true,
-        },
-        formOptions: {
-            type: Object,
-            required: true,
-        }
+  name: "CreatePage",
+  props: {
+    title: {
+      type: String,
+      required: true,
     },
-    data() {
-        return {
-        };
+    description: {
+      type: String,
     },
-    mounted() {
-        console.log('CreatePage', this)
+    resourceName: {
+      type: String,
+      required: true,
     },
-
-    render(createElement: any, context: any) {
-        console.log('context', context)
-        const data = context?.data
-        const attrs = data?.attrs
-        const resourceName = attrs?.resourceName
-        console.log(attrs)
-        return createElement("div",
-            [createElement("h1", "Create:, resourceName = " + resourceName),
-            createElement(CreatePageComponent, data)
-            ]);
+    formOptions: {
+      type: Object,
+      required: true,
     },
-}
+  },
+  render(createElement: any, context: any) {
+    const data = context?.data;
+    return createElement(CreatePageComponent, data);
+  },
+};

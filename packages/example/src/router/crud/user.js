@@ -4,10 +4,10 @@ const createUser = createRoute({
   name: "createUser",
   path: "/user",
   options: {
+    title:'Create a New User',
     type: "create",
     resourceName: "https://jsonplaceholder.typicode.com/users",
     formOptions: {
-      title: "Create User",
       onSuccess: () => {
         alert("Suuuuuucesso");
       },
@@ -20,7 +20,8 @@ const createUser = createRoute({
           type: "text",
           validations: ["required", "maxlength:120", "minlength:10"],
           label: "Name",
-        }, {
+        },
+        {
           id: "email",
           type: "email",
           validations: ["required"],
