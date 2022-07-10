@@ -11,11 +11,13 @@ It is being design to be used like:
 const createProductRoute = createRoute({
   name: "createProduct",
   path: "/product",
-  options: {
+  resource: "https://jsonplaceholder.typicode.com/posts",
+  page: {
+    type: "create",
     title: "Create a New Product",
     description: "We are gonna use cars for the example",
-    type: "create",
-    resource: "https://jsonplaceholder.typicode.com/posts",
+  },
+  options: {
     formOptions: {...}
   },
 });
@@ -27,11 +29,12 @@ and so add it to you `routes` array at `Router` config, and its ready for use.
 | --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `name`                | `string`      | The name to be passe to the Vue Router object                                                                              | yes      |
 | `path`                | `string`      | The path to be setup to the Vue Router object                                                                              | yes      |
-| `options`             | `object`      | Configuration object fo the route                                                                                          | yes      |
-| `options.title`       | `string`      | Title of the page                                                                                                          | yes      |
-| `options.description` | `string`      | description message above the title of the page                                                                            | no       |
-| `options.type`        | `string`      | The type of the page to be create. Must be one of `create`, `read` ,`update` or `delete`.                                  | yes      |
-| `options.resource`    | `string`      | The endpoint to be setup at the resource                                                                                   | yes      |
+| `resource`            | `string`      | The endpoint to be setup at the resource                                                                                   | yes      |
+| `page`                | `object`      | Configuration object fo the page                                                                                           | yes      |
+| `page.title`          | `string`      | Title of the page                                                                                                          | yes      |
+| `page.description`    | `string`      | description message above the title of the page                                                                            | no       |
+| `page.type`           | `string`      | The type of the page to be create. Must be one of `create`, `read` ,`update` or `delete`.                                  | yes      |
+| `options`             | `object`      | Configuration object fo the form                                                                                           | yes      |
 | `options.formOptions` | `FormOptions` | Configuration of the form on the page. The `formOptions` prop follows the [Form](../components/form#interfaces) component. | ?        |
 
 # Status
