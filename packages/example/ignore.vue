@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Playground</h1>
+    <component v-if="routeBuilded" :is="routeBuilded.component" />
     <details class="collapse">
       <summary class="title">General</summary>
       <div class="description">
@@ -20,7 +21,9 @@
             Outlined
           </Button>
 
-          <Button variant="contained" @click="model = 'click'"> contained </Button>
+          <Button variant="contained" @click="model = 'click'">
+            contained
+          </Button>
         </div>
       </div>
     </details>
@@ -122,7 +125,7 @@
 import Vue from "vue";
 import { createSimpleCRUD } from "@vue-cruder/core";
 import { List, Form, Button } from "./index";
-
+import { createRoute } from "./builders/routes/index";
 export default Vue.extend({
   name: "App",
   components: {
@@ -191,6 +194,7 @@ export default Vue.extend({
         },
       },
     ],
+    routeBuilded: null,
   }),
   mounted() {
     this.service = createSimpleCRUD({
@@ -198,6 +202,15 @@ export default Vue.extend({
       /**
        * Any auth stuff goes here
        */
+    });
+
+    this.routeBuilded = createRoute({
+      name: "createCredentials",
+      path: "credentials/new",
+      options: {
+        type: "create",
+        resourceName: "credentials",
+      },
     });
   },
 });

@@ -14,8 +14,9 @@ export const buildField = (options: FieldOptions): Field => {
   const component = getComponent(options.type);
   const validations = buildValidations(options.validations);
   const finalOptions = {
-    ...options, ...{ validations: undefined }
-  }
+    ...options,
+    ...{ validations: undefined },
+  };
   return {
     options: {
       ...finalOptions,

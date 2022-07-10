@@ -83,7 +83,6 @@ export default Vue.extend({
     },
   },
   mounted() {
-    console.log("options", this.options);
     this.form = formBuilder(this.options);
   },
 });

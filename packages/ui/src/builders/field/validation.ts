@@ -53,8 +53,7 @@ export const buildValidations = (validations: string[]): any => {
     }
   });
 
-
-  const mapped = validationProps.map(item => item);
+  const mapped = validationProps.map((item) => item);
   const finalValidation = Object.assign({}, ...mapped);
   return finalValidation;
 };

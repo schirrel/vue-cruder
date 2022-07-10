@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:demo": "vue-cli-service build --mode development",
-    "build": "vue-cli-service build --target lib --name index src/main.ts",
+    "build": "vue-cli-service build --target lib --name index src/index.ts",
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {

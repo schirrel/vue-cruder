@@ -12,7 +12,6 @@ export type FieldType =
 // export type FieldValidation = 'required' | 'empty' | 'max' | 'min' | 'maxlength'
 //     | 'minlength' | 'custom'
 
-
 export interface FieldOptions {
   id: string;
   label: string;
