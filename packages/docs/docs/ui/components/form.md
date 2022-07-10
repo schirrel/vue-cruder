@@ -10,7 +10,7 @@
 
 ## Usage
 
-```HTML
+```html
 <Form
   v-if="service"
   title="My Form"
