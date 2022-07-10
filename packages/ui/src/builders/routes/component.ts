@@ -1,6 +1,5 @@
 import {
   CreatePage,
-  EditPage,
   DeletePage,
   ListPage,
   ReadPage,
@@ -27,7 +26,7 @@ const componentByType = ({
     case "read":
       return ReadPage;
     case "update":
-      return EditPage;
+      return UpdatePage;
     case "delete":
       return DeletePage;
     case "list":

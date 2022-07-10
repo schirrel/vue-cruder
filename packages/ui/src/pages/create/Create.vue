@@ -1,19 +1,33 @@
 <template>
-  <main>Create Page with {{ resourceName }}</main>
+  <main>
+    Create Page with {{ resourceName }}
+    <Form
+      v-if="service"
+      :service="service"
+      :options="formOptions"
+    >
+    </Form>
+  </main>
 </template>
 
 <script lang="ts">
 import { createSimpleCRUD } from "@vue-cruder/core";
-import Vue from "vue";
+import { Form } from "../../components";
+import Vue, { PropOptions } from "vue";
+import { FormOptions } from "../../builders/models";
 
 export default Vue.extend({
   name: "CreatePageComponent",
+  components: { Form },
   props: {
     resourceName: {
       type: String,
-      // required: true,
-      default: "abc",
+      required: true,
     },
+    formOptions: {
+      type: Object,
+      required: true,
+    } as PropOptions<FormOptions>,
   },
   data() {
     return {

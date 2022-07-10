@@ -1,14 +1,28 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/credentials">credential</router-link> | 
-      <router-link to="/other">other</router-link>
+      <template v-for="link in links">
+        <router-link :key="link.path" :to="link.path">{{
+          link.name
+        }}</router-link>
+      </template>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import "@vue-cruder/ui/dist/index.css";
+import { routes } from "./router/index";
+export default {
+  name: "App",
+  data() {
+    return {
+      links: routes,
+    };
+  },
+};
+</script>
 
 <style>
 #app {
@@ -21,11 +35,13 @@
 
 #nav {
   padding: 30px;
+  gap: 8px;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin: 10px;
 }
 
 #nav a.router-link-exact-active {
