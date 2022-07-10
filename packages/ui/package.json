@@ -12,6 +12,7 @@
     "@material/base": "^14.0.0",
     "@material/button": "^13.0.0",
     "@material/card": "^14.0.0",
+    "@material/circular-progress": "^14.0.0",
     "@material/data-table": "^13.0.0",
     "@material/menu": "^13.0.0",
     "@material/textfield": "^14.0.0",

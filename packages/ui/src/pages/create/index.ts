@@ -1,14 +1,12 @@
 import CreatePageComponent from "./Create.vue";
 
+
 export const CreatePage = {
   name: "CreatePage",
   props: {
-    title: {
-      type: String,
+    page: {
+      type: Object,
       required: true,
-    },
-    description: {
-      type: String,
     },
     resource: {
       type: String,

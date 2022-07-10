@@ -41,11 +41,10 @@ import { FormOptions } from "../../builders/models";
 import { formBuilder } from "../../builders/form";
 
 export default Vue.extend({
-  name: "List",
+  name: "Form",
   props: {
     service: {
       type: Object,
-      required: true,
     } as PropOptions<SimpleCRUD>,
     options: {
       type: Object,
@@ -63,6 +62,14 @@ export default Vue.extend({
       this.form = formBuilder(this.options);
     },
   },
+  mounted() {
+    if (!this.service && !this.options.onSubmit) {
+      throw new Error(
+        "It's required to have one of follow props: service or options.onSubmit"
+      );
+    }
+    this.form = formBuilder(this.options);
+  },
   methods: {
     async submit() {
       if (this.options.onSubmit) {
@@ -78,9 +85,6 @@ export default Vue.extend({
     cancel() {
       this.options?.onCancel();
     },
-  },
-  mounted() {
-    this.form = formBuilder(this.options);
   },
 });
 </script>

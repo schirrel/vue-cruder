@@ -1,4 +1,4 @@
-# Form
+# Button
 
 ## Props
 
@@ -21,7 +21,7 @@
 
 ## Usage
 
-```vue
+```html
 <Button @click="model = 'click'"> Button </Button>
 <Button type="submit" @click="model = 'click'"> Submit </Button>
 <Button type="reset" @click="model = 'click'"> Reset </Button>

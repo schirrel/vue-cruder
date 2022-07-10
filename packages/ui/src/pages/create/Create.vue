@@ -1,34 +1,27 @@
 <template>
   <main>
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
-    <Form
-      :key="resource"
-      v-if="service"
-      :service="service"
-      :options="options"
-    >
-    </Form>
+    <LoadingLayer v-if="loading" />
+
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+    <Form :key="resource" :options="options" />
   </main>
 </template>
 
 <script lang="ts">
 import { createSimpleCRUD } from "@vue-cruder/core";
-import { Form } from "../../components";
+import { Form, LoadingLayer } from "../../components";
 import Vue, { PropOptions } from "vue";
-import { FormOptions } from "../../builders/models";
+import { FormOptions, PageProps } from "../../builders/models";
 
 export default Vue.extend({
   name: "CreatePageComponent",
-  components: { Form },
+  components: { Form, LoadingLayer },
   props: {
-    title: {
-      type: String,
+    page: {
+      type: Object,
       required: true,
-    },
-    description: {
-      type: String,
-    },
+    } as PropOptions<PageProps>,
     resource: {
       type: String,
       required: true,
@@ -40,6 +33,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      loading: false,
       id: "",
       form: {},
       service: null,
@@ -55,12 +49,25 @@ export default Vue.extend({
   },
   computed: {
     options() {
-      return { ...this.formOptions, submit: this.create };
+      return {
+        ...this.formOptions,
+        submit: this.create,
+        onSubmit: this.create,
+      };
     },
   },
   methods: {
-    create(models) {
-      this.service.create(models);
+    create(models: any) {
+      this.loading = true;
+      try {
+        this.service.create(models);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setTimeout(() => {
+          this.loading = false;
+        }, 2000);
+      }
     },
   },
 });

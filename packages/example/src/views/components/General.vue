@@ -2,7 +2,9 @@
   <div id="app">
     <h1>Playground</h1>
     <h2>General</h2>
+
     <div class="description">
+      <h3>Button</h3>
       <p>Type</p>
       <div class="horizontal">
         <Button @click="model = 'click'"> Button </Button>
@@ -22,16 +24,21 @@
         </Button>
       </div>
     </div>
+    <div class="description">
+      <h3>Loading</h3>
+      <Loading />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { Button } from "@vue-cruder/ui";
+import { Button, Loading } from "@vue-cruder/ui";
 export default Vue.extend({
   name: "App",
   components: {
     Button,
+    Loading,
   },
   data: () => ({}),
 });

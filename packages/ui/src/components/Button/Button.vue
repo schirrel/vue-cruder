@@ -20,6 +20,7 @@ type VariantOptions = "contained" | "text" | "outlined";
 type TypeOptions = "button" | "submit" | "reset";
 
 export default Vue.extend({
+  name: "Button",
   props: {
     type: {
       type: String,

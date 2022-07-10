@@ -10,7 +10,7 @@
 
 ## Usage
 
-```vue
+```HTML
 <Form
   v-if="service"
   title="My Form"

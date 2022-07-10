@@ -3,11 +3,13 @@ import { createRoute } from "@vue-cruder/ui";
 const createProduct = createRoute({
   name: "createProduct",
   path: "/product",
-  options: {
+  resource: "https://jsonplaceholder.typicode.com/posts",
+  page: {
+    type: "create",
     title: "Create a New Product",
     description: "We are gonna use cars for the example",
-    type: "create",
-    resource: "https://jsonplaceholder.typicode.com/posts",
+  },
+  options: {
     formOptions: {
       onSuccess: () => {
         alert("Suuuuuucesso");
@@ -27,7 +29,7 @@ const createProduct = createRoute({
         },
         {
           id: "chassi",
-          type: "text",
+          type: "number",
           label: "Chassi",
           validations: ["required"],
         },
