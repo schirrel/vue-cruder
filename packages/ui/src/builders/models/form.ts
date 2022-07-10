@@ -3,10 +3,11 @@ import { Field, FieldOptions } from "./field";
 export interface FormOptions {
   title?: string;
   fields: FieldOptions[];
-  submit?: () => void;
   validate?: () => void;
   onSuccess?: () => void;
   onError?: () => void;
+  onCancel?: () => void;
+  onSubmit?: () => void;
 }
 
 export interface FormBuild {

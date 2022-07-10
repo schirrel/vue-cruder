@@ -65,9 +65,8 @@ export default Vue.extend({
   },
   methods: {
     async submit() {
-      console.log("Submited");
-      if (this.options.submit) {
-        return this.options.submit(this.models);
+      if (this.options.onSubmit) {
+        return this.options.onSubmit(this.models);
       }
       try {
         const response = await this.service.create(this.models);
@@ -77,7 +76,7 @@ export default Vue.extend({
       }
     },
     cancel() {
-      console.log("cancel");
+      this.options?.onCancel();
     },
   },
   mounted() {

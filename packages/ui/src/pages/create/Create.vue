@@ -46,16 +46,11 @@ export default Vue.extend({
     };
   },
   watch: {
-    resourceName(oldValue, newbValue) {
-      console.log("resourceName", oldValue, newbValue);
+    resourceName() {
       this.service = createSimpleCRUD(this.resourceName);
-    },
-    service(oldValue, newbValue) {
-      console.log("service", oldValue, newbValue);
     },
   },
   mounted() {
-    console.log(this.resourceName);
     this.service = createSimpleCRUD(this.resourceName);
   },
   computed: {
@@ -65,9 +60,6 @@ export default Vue.extend({
   },
   methods: {
     create(models) {
-      console.log("create");
-      console.log(this.resourceName);
-      console.log(this.service);
       this.service.create(models);
     },
   },

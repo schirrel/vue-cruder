@@ -11,9 +11,6 @@ const createUser = createRoute({
       onSuccess: () => {
         alert("Suuuuuucesso");
       },
-      onError: (err) => {
-        console.log(err);
-      },
       fields: [
         {
           id: "name",

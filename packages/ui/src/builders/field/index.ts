@@ -22,9 +22,6 @@ export const buildField = (options: FieldOptions): Field => {
       ...finalOptions,
       ...validations,
     },
-    validation: () => {
-      console.log("calling validations");
-    },
     component,
   };
 };

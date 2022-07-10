@@ -31,9 +31,6 @@ export default Vue.extend({
       onSuccess: () => {
         alert("Suuuuuucesso");
       },
-      onError: (err) => {
-        console.log(err);
-      },
       fields: [
         {
           id: "name",
