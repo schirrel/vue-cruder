@@ -1,29 +1,39 @@
 <template>
   <div id="app">
     <h1>Playground</h1>
-    <ul>
-      <template v-for="component in components">
-        <router-link
-          class="component-card"
-          tag="li"
-          :key="component.path"
-          :to="component.path"
-          >{{ component.name }}</router-link
-        >
-      </template>
-    </ul>
+    <h2>General</h2>
+    <div class="description">
+      <p>Type</p>
+      <div class="horizontal">
+        <Button @click="model = 'click'"> Button </Button>
+        <Button type="submit" @click="model = 'click'"> Submit </Button>
+        <Button type="reset" @click="model = 'click'"> Reset </Button>
+      </div>
+      <p>Variant</p>
+      <div class="horizontal">
+        <Button @click="model = 'click'"> Default </Button>
+
+        <Button variant="text" @click="model = 'click'"> Text </Button>
+
+        <Button variant="outlined" @click="model = 'click'"> Outlined </Button>
+
+        <Button variant="contained" @click="model = 'click'">
+          contained
+        </Button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { componentRoutes } from "../router/components";
-
+import { Button } from "@vue-cruder/ui";
 export default Vue.extend({
   name: "App",
-  data: () => ({
-    components: componentRoutes,
-  }),
+  components: {
+    Button,
+  },
+  data: () => ({}),
 });
 </script>
 
@@ -92,22 +102,5 @@ details {
 .horizontal {
   gap: 8px;
   display: flex;
-}
-ul {
-  display: flex;
-  list-style: none;
-  gap: 8px;
-}
-.component-card {
-  color: #2c3e50;
-  font-weight: 500;;
-  cursor: pointer;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-.component-card:hover {
-  color: #ccc;
-  background: #2c3e50;
 }
 </style>

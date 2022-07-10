@@ -2,7 +2,13 @@
   <main>
     <h1>{{ title }}</h1>
     <p>{{ description }}</p>
-    <Form v-if="service" :service="service" :options="formOptions"> </Form>
+    <Form
+      :key="resourceName"
+      v-if="service"
+      :service="service"
+      :options="options"
+    >
+    </Form>
   </main>
 </template>
 
@@ -36,15 +42,8 @@ export default Vue.extend({
     return {
       id: "",
       form: {},
-      service: {},
+      service: null,
     };
-  },
-  methods: {
-    update() {
-      this.service.create({
-        object: this.form,
-      });
-    },
   },
   watch: {
     resourceName() {
@@ -54,7 +53,19 @@ export default Vue.extend({
   mounted() {
     console.log(this.resourceName);
     this.service = createSimpleCRUD(this.resourceName);
-    console.log("CreatePageComponent", this);
+  },
+  computed: {
+    options() {
+      return { ...this.formOptions, submit: this.create };
+    },
+  },
+  methods: {
+    create(models) {
+      console.log("create");
+      console.log(this.resourceName);
+      console.log(this.service);
+      this.service.create(models);
+    },
   },
 });
 </script>

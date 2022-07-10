@@ -1,29 +1,63 @@
 <template>
   <div id="app">
     <h1>Playground</h1>
-    <ul>
-      <template v-for="component in components">
-        <router-link
-          class="component-card"
-          tag="li"
-          :key="component.path"
-          :to="component.path"
-          >{{ component.name }}</router-link
-        >
-      </template>
-    </ul>
+    <h2>Form Builder</h2>
+    <div class="description">
+      <Form
+        v-if="service"
+        title="My Form"
+        :service="service"
+        :options="formOptions"
+      >
+      </Form>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { componentRoutes } from "../router/components";
-
+import { createSimpleCRUD } from "@vue-cruder/core";
+import { Form } from "@vue-cruder/ui";
 export default Vue.extend({
   name: "App",
+  components: {
+    Form,
+  },
   data: () => ({
-    components: componentRoutes,
+    model: "",
+    service: null,
+    formOptions: {
+      title: "Create form",
+      onSuccess: () => {
+        alert("Suuuuuucesso");
+      },
+      onError: (err) => {
+        console.log(err);
+      },
+      fields: [
+        {
+          id: "name",
+          type: "text",
+          validations: ["required", "maxlength:120", "minlength:10"],
+          label: "Name",
+        },
+        {
+          id: "age",
+          type: "number",
+          validations: ["required", "minvalue:12"],
+          label: "Age",
+        },
+      ],
+    },
   }),
+  mounted() {
+    this.service = createSimpleCRUD({
+      baseURL: "https://jsonplaceholder.typicode.com/users",
+      /**
+       * Any auth stuff goes here
+       */
+    });
+  },
 });
 </script>
 
@@ -92,22 +126,5 @@ details {
 .horizontal {
   gap: 8px;
   display: flex;
-}
-ul {
-  display: flex;
-  list-style: none;
-  gap: 8px;
-}
-.component-card {
-  color: #2c3e50;
-  font-weight: 500;;
-  cursor: pointer;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-.component-card:hover {
-  color: #ccc;
-  background: #2c3e50;
 }
 </style>
