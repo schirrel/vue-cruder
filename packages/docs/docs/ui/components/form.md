@@ -5,7 +5,7 @@
 | Prop      | Type                 | Description                                                                                  | Required |
 | --------- | -------------------- | -------------------------------------------------------------------------------------------- | -------- |
 | `service` | `CRUD`, `SimpleCRUD` | Object of the service to be used for the submit event, can be crud or simpleCrud             | yes      |
-| `options` | `FormOptions`        | options with fields used for build the form                                                  | yes       |
+| `options` | `FormOptions`        | options with fields used for build the form                                                  | yes      |
 | `title`   | `string`             | Array that define the columns of your list. Requires to be as `{ text: "Name",key: "name"` } | no       |
 
 ## Usage
@@ -55,10 +55,10 @@ Example of Options:
 interface FormOptions {
   title?: string
   fields: FieldOptions[]
-  submit?: () => void
-  validate?: () => void
-  onSuccess?: () => void
-  onError?: () => void
+  validate?: () => void;
+  onSuccess?: () => void;
+  onError?: () => void;
+  onCancel?: () => void;
+  onSubmit?: () => void;
 }
 ```
-

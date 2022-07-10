@@ -10,7 +10,7 @@ export const createRoute = ({ name, path, options }: RouteProvider) => {
 
   const component = componentBuilder({
     name,
-    resourceName: options.resourceName,
+    resource: options.resource,
     type: options.type,
     options,
   })

@@ -17,6 +17,10 @@ export default {
         link: "/ui/",
         activeMatch: "/ui/",
       },
+      {
+        text: "Demo",
+        link: "https://schirrel.dev/vue-cruder/demo",
+      },
     ],
     sidebar: {
       "/core/": [
@@ -28,12 +32,22 @@ export default {
           ],
         },
       ],
-
       "/ui/": [
         {
           text: "UI",
+          items: [{ text: "Introduction", link: "/ui/" }],
+        },
+        {
+          text: "Providers",
           items: [
-            { text: "Components", link: "/ui/components/" },
+            { text: "Introduction", link: "/ui/providers/" },
+            { text: "Status", link: "/ui/providers/index#status" },
+          ],
+        },
+        {
+          text: "Components",
+          items: [
+            { text: "Status", link: "/ui/components/" },
             { text: "Button", link: "/ui/components/button" },
             { text: "Form", link: "/ui/components/form" },
             { text: "Form Fields", link: "/ui/components/fields" },

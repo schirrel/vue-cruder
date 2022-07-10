@@ -7,7 +7,7 @@ const createProduct = createRoute({
     title: "Create a New Product",
     description: "We are gonna use cars for the example",
     type: "create",
-    resourceName: "https://jsonplaceholder.typicode.com/posts",
+    resource: "https://jsonplaceholder.typicode.com/posts",
     formOptions: {
       onSuccess: () => {
         alert("Suuuuuucesso");

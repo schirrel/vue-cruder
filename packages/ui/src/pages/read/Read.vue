@@ -9,7 +9,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "ReadPage",
   props: {
-    resourceName: {
+    resource: {
       type: String,
       required: true,
     },
@@ -17,7 +17,7 @@ export default Vue.extend({
   data() {
     return {
       id: "",
-      service: createSimpleCRUD(this.resourceName),
+      service: createSimpleCRUD(this.resource),
     };
   },
   methods: {

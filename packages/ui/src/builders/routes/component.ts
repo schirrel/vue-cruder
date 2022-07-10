@@ -10,13 +10,13 @@ import Vue from "vue";
 interface ComponentProvider {
   name: string;
   type: string;
-  resourceName: string;
+  resource: string;
   options: any;
 }
 
 const componentByType = ({
   name,
-  resourceName,
+  resource,
   type,
   options,
 }: ComponentProvider) => {
@@ -36,11 +36,11 @@ const componentByType = ({
 
 export const componentBuilder = ({
   name,
-  resourceName,
+  resource,
   type,
   options,
 }: ComponentProvider) => {
-  const _component = componentByType({ name, resourceName, type, options })
+  const _component = componentByType({ name, resource, type, options })
 
   const props = {}
   Object.keys((_component as any).props).forEach(key => {

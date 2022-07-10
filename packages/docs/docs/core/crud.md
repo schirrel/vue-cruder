@@ -10,25 +10,55 @@ const services = createCRUD({
 ```
 
 ## Create
+
 Performs a `POST`
+
 ### Usage
-- `service.create("user",{})`
+
+```js
+const response = await service.create("user", {
+  /*data*/
+});
+```
+
+Concatenating the URL and so making a HTTP POST Request to the full URL `https://your-general-endpoint.com/api/user`
 
 ## Read
+
 Performs a`GET` for a list or a single record.
+
 ### Usage
-- `service.read("user")`
-- `service.read("user",1)` 
-- `service.read("user",'13de-3fvf-vf4g')` 
+
+```js
+service.read("user");
+service.read("user", 1);
+service.read("user", "13de-3fvf-vf4g");
+```
+
+Concatenating the URL and so making a HTTP GET Request to the full URL `https://your-general-endpoint.com/api/user`
 
 ## Update
+
 Performs a `PUT`
+
 ### Usage
-- `service.put("user",'13de-3fvf-vf4g', {})`
-- `service.put("user",1', {})`
+
+```js
+service.put("user",'13de-3fvf-vf4g', {})
+service.put("user",1, {})
+```
+
+Concatenating the URL and so making a HTTP PUT Request to the full URL `https://your-general-endpoint.com/api/user`
 
 ## Delete
+
 Performs a `DELETE`
+
 ### Usage
-- `service.delete("user",'13de-3fvf-vf4g')`
-- `service.delete("user",1')`
+
+```js
+service.delete("user", "13de-3fvf-vf4g");
+service.delete("user", 1);
+```
+
+Concatenating the URL and so making a HTTP DELETE Request to the full URL `https://your-general-endpoint.com/api/user`

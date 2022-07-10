@@ -3,7 +3,7 @@
     <h1>{{ title }}</h1>
     <p>{{ description }}</p>
     <Form
-      :key="resourceName"
+      :key="resource"
       v-if="service"
       :service="service"
       :options="options"
@@ -29,7 +29,7 @@ export default Vue.extend({
     description: {
       type: String,
     },
-    resourceName: {
+    resource: {
       type: String,
       required: true,
     },
@@ -46,12 +46,12 @@ export default Vue.extend({
     };
   },
   watch: {
-    resourceName() {
-      this.service = createSimpleCRUD(this.resourceName);
+    resource() {
+      this.service = createSimpleCRUD(this.resource);
     },
   },
   mounted() {
-    this.service = createSimpleCRUD(this.resourceName);
+    this.service = createSimpleCRUD(this.resource);
   },
   computed: {
     options() {

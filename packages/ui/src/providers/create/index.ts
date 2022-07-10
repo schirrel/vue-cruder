@@ -1,7 +1,7 @@
 import { FormOptions } from "@/builders/models";
 
 export const createProvider = (
-  resourceName: string,
+  resource: string,
   formOptions: FormOptions
 ) => {
   // create service

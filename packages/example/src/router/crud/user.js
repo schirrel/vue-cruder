@@ -6,7 +6,7 @@ const createUser = createRoute({
   options: {
     title:'Create a New User',
     type: "create",
-    resourceName: "https://jsonplaceholder.typicode.com/users",
+    resource: "https://jsonplaceholder.typicode.com/users",
     formOptions: {
       onSuccess: () => {
         alert("Suuuuuucesso");

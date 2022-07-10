@@ -9,14 +9,14 @@ import Vue from "vue";
 export default Vue.extend({
   name: "ListPage",
   props: {
-    resourceName: {
+    resource: {
       type: String,
       required: true,
     },
   },
   data() {
     return {
-      service: createSimpleCRUD(this.resourceName),
+      service: createSimpleCRUD(this.resource),
     };
   },
   methods: {

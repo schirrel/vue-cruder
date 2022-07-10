@@ -9,7 +9,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "DeletePage",
   props: {
-    resourceName: {
+    resource: {
       type: String,
       required: true,
     },
@@ -18,7 +18,7 @@ export default Vue.extend({
     return {
       id: "",
       form: {},
-      service: createSimpleCRUD(this.resourceName),
+      service: createSimpleCRUD(this.resource),
     };
   },
   methods: {

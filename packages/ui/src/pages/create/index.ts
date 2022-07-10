@@ -10,7 +10,7 @@ export const CreatePage = {
     description: {
       type: String,
     },
-    resourceName: {
+    resource: {
       type: String,
       required: true,
     },
