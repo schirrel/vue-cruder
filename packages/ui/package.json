@@ -1,6 +1,6 @@
 {
   "name": "@vue-cruder/ui",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,7 +15,7 @@
     "@material/data-table": "^13.0.0",
     "@material/menu": "^13.0.0",
     "@material/textfield": "^14.0.0",
-    "@vue-cruder/core": "0.1.8",
+    "@vue-cruder/core": "0.1.9",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
