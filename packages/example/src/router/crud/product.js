@@ -33,6 +33,12 @@ const createProduct = createRoute({
           label: "Chassi",
           validations: ["required"],
         },
+        {
+          id: "created",
+          type: "date",
+          label: "Created At",
+          validations: ["required"],
+        },
       ],
     },
   },

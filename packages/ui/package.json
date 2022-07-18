@@ -14,11 +14,13 @@
     "@material/card": "^14.0.0",
     "@material/circular-progress": "^14.0.0",
     "@material/data-table": "^13.0.0",
+    "@material/dialog": "^14.0.0",
     "@material/menu": "^13.0.0",
     "@material/textfield": "^14.0.0",
     "@vue-cruder/core": "0.1.9",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-fragment": "1.5.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.18.0",
